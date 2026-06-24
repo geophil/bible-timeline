@@ -1,0 +1,97 @@
+import { CalendarDays, ExternalLink, Pencil, Users, X } from 'lucide-react'
+import { dateSpan, formatDate } from '../date'
+import type { Person, TimelineItem } from '../types'
+
+type Props = {
+  item?: TimelineItem
+  allItems: TimelineItem[]
+  onClose: () => void
+  onEdit: (item: TimelineItem) => void
+  onSelect: (item: TimelineItem) => void
+}
+
+export function DetailDrawer({ item, allItems, onClose, onEdit, onSelect }: Props) {
+  if (!item) return null
+  const people = allItems.filter((entry): entry is Person => entry.type === 'person')
+  const contemporaries =
+    item.type === 'person'
+      ? people
+          .filter((person) => {
+            const selected = dateSpan(item)
+            const candidate = dateSpan(person)
+            return person.id !== item.id && candidate[0] <= selected[1] && candidate[1] >= selected[0]
+          })
+          .slice(0, 12)
+      : []
+  const relationships =
+    item.type === 'person'
+      ? item.relationships
+          .map((relationship) => ({
+            ...relationship,
+            person: people.find((person) => person.id === relationship.personId)
+          }))
+          .filter((relationship) => relationship.person)
+      : []
+
+  return (
+    <aside className="detail-drawer" aria-label={`${item.name} details`}>
+      <div className="drawer-actions">
+        <button onClick={() => onEdit(item)}><Pencil /> Edit</button>
+        <button className="icon-button" onClick={onClose} aria-label="Close details"><X /></button>
+      </div>
+      {item.image && <img className="detail-image" src={item.image} alt="" />}
+      <p className="eyebrow">{item.type}</p>
+      <h2>{item.name}</h2>
+      <p className="date-range"><CalendarDays /> {itemDate(item)}</p>
+      {item.description && <p>{item.description}</p>}
+      {item.notes && <div className="note"><strong>Notes</strong><p>{item.notes}</p></div>}
+      {'consolidatedGroup' in item && item.consolidatedGroup && (
+        <div className="note warning"><strong>Shared source range</strong><p>{item.consolidatedGroup}</p></div>
+      )}
+      {item.tags.length > 0 && (
+        <div className="tag-list">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+      )}
+      {'scriptureReferences' in item && item.scriptureReferences.length > 0 && (
+        <section>
+          <h3>Scripture references</h3>
+          <p>{item.scriptureReferences.join(' · ')}</p>
+        </section>
+      )}
+      {relationships.length > 0 && (
+        <section>
+          <h3><Users /> Relationships</h3>
+          <div className="person-links">
+            {relationships.map(({ person, type }) => (
+              <button key={person!.id} onClick={() => onSelect(person!)}>
+                {person!.name} <small>{type}</small>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+      {contemporaries.length > 0 && (
+        <section>
+          <h3><Users /> Contemporaries</h3>
+          <div className="person-links">
+            {contemporaries.map((person) => (
+              <button key={person.id} onClick={() => onSelect(person)}>{person.name}</button>
+            ))}
+          </div>
+        </section>
+      )}
+      <section>
+        <h3>Sources</h3>
+        {item.sources.map((source) => (
+          <a key={`${source.section}-${source.url}`} href={source.url} target="_blank" rel="noreferrer">
+            Source section {source.section} <ExternalLink />
+          </a>
+        ))}
+      </section>
+    </aside>
+  )
+}
+
+function itemDate(item: TimelineItem) {
+  if (item.type === 'event') return formatDate(item.date)
+  return `${formatDate(item.start)} – ${formatDate(item.end)}`
+}
