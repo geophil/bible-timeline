@@ -62,11 +62,9 @@ main { padding: 0 20px 20px; }
 .timeline-context { position: relative; z-index: 4; flex: 0 0 154px; border-bottom: 1px solid var(--line); background: var(--paper); box-shadow: 0 8px 18px rgba(50, 54, 44, .08); }
 .timeline-context-svg { width: 100%; min-width: 720px; display: block; touch-action: none; cursor: grab; user-select: none; }
 .timeline-context-svg:active { cursor: grabbing; }
-.context-label { position: absolute; z-index: 6; left: 13px; padding: 4px 7px; border-radius: 7px; color: #77705f; background: rgba(251, 248, 239, .88); font-size: 9px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; pointer-events: none; }
-.context-label { top: 57px; }
+.timeline-help { position: absolute; z-index: 10; left: max(10px, env(safe-area-inset-left)); bottom: max(10px, env(safe-area-inset-bottom)); padding: 5px 8px; border: 1px solid rgba(216, 207, 186, .72); border-radius: 9px; color: #77705f; background: rgba(255, 253, 247, .88); box-shadow: 0 3px 12px rgba(39, 51, 40, .08); backdrop-filter: blur(6px); font-size: 8px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; pointer-events: none; }
 .timeline-controls { position: absolute; z-index: 10; right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); display: flex; align-items: center; padding: 3px; gap: 3px; border-radius: 12px; background: rgba(255, 253, 247, .94); box-shadow: 0 4px 16px rgba(39, 51, 40, .14); backdrop-filter: blur(8px); }
 .timeline-controls button { width: 34px; min-height: 34px; height: 34px; padding: 0; border-radius: 9px; }
-.timeline-controls span { padding: 0 6px; min-width: 48px; font-size: 10px; text-align: center; }
 .people-scroll { flex: 1 1 auto; min-height: 0; position: relative; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: auto; -webkit-overflow-scrolling: touch; touch-action: pan-y; scrollbar-gutter: stable; background: var(--paper); }
 .people-svg { width: 100%; min-width: 720px; display: block; user-select: none; touch-action: pan-y; cursor: grab; }
 .people-svg:active { cursor: grabbing; }

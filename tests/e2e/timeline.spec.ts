@@ -42,9 +42,8 @@ test('zooms from the character canvas without disabling vertical scrolling', asy
   await page.goto('/')
   const people = page.getByTestId('people-scroll')
   const canvas = page.getByTestId('people-canvas')
-  const zoomReadout = page.locator('.timeline-controls span')
-
-  await expect(zoomReadout).toHaveText('100%')
+  const firstBar = page.locator('.person rect').first()
+  const before = Number(await firstBar.getAttribute('x'))
   await canvas.evaluate((element) => {
     element.dispatchEvent(
       new WheelEvent('wheel', {
@@ -57,7 +56,7 @@ test('zooms from the character canvas without disabling vertical scrolling', asy
       })
     )
   })
-  await expect(zoomReadout).not.toHaveText('100%')
+  await expect.poll(async () => Number(await firstBar.getAttribute('x'))).not.toBe(before)
 
   await people.evaluate((element) => {
     element.scrollTop = element.scrollHeight
@@ -131,6 +130,22 @@ test('keeps timeline controls below the fixed context labels', async ({ page }) 
   expect(cardBox).not.toBeNull()
   expect(controlBox!.y).toBeGreaterThan(contextBox!.y + contextBox!.height)
   expect(controlBox!.x + controlBox!.width).toBeLessThanOrEqual(cardBox!.x + cardBox!.width)
+})
+
+test('keeps interaction help outside the fixed time context', async ({ page }) => {
+  await page.goto('/')
+  const help = page.locator('.timeline-help')
+  const context = page.getByTestId('timeline-context')
+  const card = page.getByRole('region', { name: 'Interactive timeline' })
+  const helpBox = await help.boundingBox()
+  const contextBox = await context.boundingBox()
+  const cardBox = await card.boundingBox()
+
+  expect(helpBox).not.toBeNull()
+  expect(contextBox).not.toBeNull()
+  expect(cardBox).not.toBeNull()
+  expect(helpBox!.y).toBeGreaterThan(contextBox!.y + contextBox!.height)
+  expect(helpBox!.x).toBeGreaterThanOrEqual(cardBox!.x)
 })
 
 test('keeps a person name, bar, and dates in one compact block', async ({ page }) => {

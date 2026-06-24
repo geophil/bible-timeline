@@ -239,6 +239,9 @@ export function Timeline({
 
   return (
     <section ref={cardRef} className="timeline-card" aria-label="Interactive timeline">
+      <div className="timeline-help" aria-hidden="true">
+        Drag · pinch to zoom · scroll vertically
+      </div>
       <div className="timeline-controls" data-no-zoom>
         <button onClick={() => zoomBy(1.6)} aria-label="Zoom in"><Plus /></button>
         <button onClick={() => zoomBy(0.625)} aria-label="Zoom out"><Minus /></button>
@@ -250,10 +253,8 @@ export function Timeline({
         >
           {immersive ? <Minimize2 /> : <Maximize2 />}
         </button>
-        <span>{Math.round(zoomLevel * 100)}%</span>
       </div>
       <div className="timeline-context" data-testid="timeline-context">
-        <div className="context-label">Time context · drag or pinch</div>
         <svg
           ref={contextRef}
           className="timeline-context-svg"
