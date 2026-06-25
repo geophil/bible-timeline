@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "data:extract:jw-dates": "node scripts/parse-jw-dates-calendar.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",

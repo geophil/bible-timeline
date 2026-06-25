@@ -27,6 +27,18 @@ Open the local URL printed by Vite. In Safari or Chrome, use the browser’s
 Uploaded images are resized and stored locally. Source publication artwork is
 not included or hotlinked.
 
+## Standalone research data
+
+The parsed BCE chronology from the public **Dates (Calendar)** source is kept
+separate from the application's starter data:
+
+- `data/jw-dates-calendar-bce.json`
+- `data/jw-dates-calendar-bce.csv`
+
+See [`data/README.md`](data/README.md) for its schema, source boundaries, and
+regeneration command. This dataset is review material and is not loaded into
+the timeline.
+
 ## Verification
 
 ```bash
