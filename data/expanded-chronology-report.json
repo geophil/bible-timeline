@@ -1,0 +1,2285 @@
+{
+  "generatedAt": "2026-06-25T18:23:30.109Z",
+  "sourceRecordCount": 430,
+  "eventCount": 368,
+  "enrichmentCount": 62,
+  "titleLimit": 48,
+  "errors": [],
+  "resolutions": [
+    {
+      "sourceParagraph": "p69",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-adam"
+      ]
+    },
+    {
+      "sourceParagraph": "p70",
+      "resolution": "event",
+      "eventId": "chronology-p70"
+    },
+    {
+      "sourceParagraph": "p71",
+      "resolution": "event",
+      "eventId": "chronology-p71"
+    },
+    {
+      "sourceParagraph": "p72",
+      "resolution": "event",
+      "eventId": "chronology-p72"
+    },
+    {
+      "sourceParagraph": "p73",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-enoch"
+      ]
+    },
+    {
+      "sourceParagraph": "p74",
+      "resolution": "event",
+      "eventId": "chronology-p74"
+    },
+    {
+      "sourceParagraph": "p75",
+      "resolution": "event",
+      "eventId": "chronology-p75"
+    },
+    {
+      "sourceParagraph": "p76",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-adam"
+      ]
+    },
+    {
+      "sourceParagraph": "p77",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-enoch"
+      ]
+    },
+    {
+      "sourceParagraph": "p78",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-noah"
+      ]
+    },
+    {
+      "sourceParagraph": "p79",
+      "resolution": "event",
+      "eventId": "chronology-p79"
+    },
+    {
+      "sourceParagraph": "p80",
+      "resolution": "event",
+      "eventId": "chronology-p80"
+    },
+    {
+      "sourceParagraph": "p81",
+      "resolution": "event",
+      "eventId": "chronology-p81"
+    },
+    {
+      "sourceParagraph": "p82",
+      "resolution": "event",
+      "eventId": "chronology-p82"
+    },
+    {
+      "sourceParagraph": "p83",
+      "resolution": "event",
+      "eventId": "chronology-p83"
+    },
+    {
+      "sourceParagraph": "p84",
+      "resolution": "event",
+      "eventId": "chronology-p84"
+    },
+    {
+      "sourceParagraph": "p85",
+      "resolution": "event",
+      "eventId": "chronology-p85"
+    },
+    {
+      "sourceParagraph": "p86",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-global-deluge"
+      ]
+    },
+    {
+      "sourceParagraph": "p87",
+      "resolution": "event",
+      "eventId": "chronology-p87"
+    },
+    {
+      "sourceParagraph": "p88",
+      "resolution": "event",
+      "eventId": "chronology-p88"
+    },
+    {
+      "sourceParagraph": "p89",
+      "resolution": "event",
+      "eventId": "chronology-p89"
+    },
+    {
+      "sourceParagraph": "p90",
+      "resolution": "event",
+      "eventId": "chronology-p90"
+    },
+    {
+      "sourceParagraph": "p91",
+      "resolution": "event",
+      "eventId": "chronology-p91"
+    },
+    {
+      "sourceParagraph": "p92",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "period-post-flood"
+      ]
+    },
+    {
+      "sourceParagraph": "p93",
+      "resolution": "event",
+      "eventId": "chronology-p93"
+    },
+    {
+      "sourceParagraph": "p94",
+      "resolution": "event",
+      "eventId": "chronology-p94"
+    },
+    {
+      "sourceParagraph": "p95",
+      "resolution": "event",
+      "eventId": "chronology-p95"
+    },
+    {
+      "sourceParagraph": "p96",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-noah"
+      ]
+    },
+    {
+      "sourceParagraph": "p97",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-abraham"
+      ]
+    },
+    {
+      "sourceParagraph": "p98",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-sarah"
+      ]
+    },
+    {
+      "sourceParagraph": "p99",
+      "resolution": "event",
+      "eventId": "chronology-p99"
+    },
+    {
+      "sourceParagraph": "p100",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-abrahamic-covenant"
+      ]
+    },
+    {
+      "sourceParagraph": "p101",
+      "resolution": "event",
+      "eventId": "chronology-p101"
+    },
+    {
+      "sourceParagraph": "p102",
+      "resolution": "event",
+      "eventId": "chronology-p102"
+    },
+    {
+      "sourceParagraph": "p103",
+      "resolution": "event",
+      "eventId": "chronology-p103"
+    },
+    {
+      "sourceParagraph": "p104",
+      "resolution": "event",
+      "eventId": "chronology-p104"
+    },
+    {
+      "sourceParagraph": "p105",
+      "resolution": "event",
+      "eventId": "chronology-p105"
+    },
+    {
+      "sourceParagraph": "p106",
+      "resolution": "event",
+      "eventId": "chronology-p106"
+    },
+    {
+      "sourceParagraph": "p107",
+      "resolution": "event",
+      "eventId": "chronology-p107"
+    },
+    {
+      "sourceParagraph": "p108",
+      "resolution": "event",
+      "eventId": "chronology-p108"
+    },
+    {
+      "sourceParagraph": "p109",
+      "resolution": "event",
+      "eventId": "chronology-p109"
+    },
+    {
+      "sourceParagraph": "p110",
+      "resolution": "event",
+      "eventId": "chronology-p110"
+    },
+    {
+      "sourceParagraph": "p111",
+      "resolution": "event",
+      "eventId": "chronology-p111"
+    },
+    {
+      "sourceParagraph": "p112",
+      "resolution": "event",
+      "eventId": "chronology-p112"
+    },
+    {
+      "sourceParagraph": "p113",
+      "resolution": "event",
+      "eventId": "chronology-p113"
+    },
+    {
+      "sourceParagraph": "p114",
+      "resolution": "event",
+      "eventId": "chronology-p114"
+    },
+    {
+      "sourceParagraph": "p115",
+      "resolution": "event",
+      "eventId": "chronology-p115"
+    },
+    {
+      "sourceParagraph": "p116",
+      "resolution": "event",
+      "eventId": "chronology-p116"
+    },
+    {
+      "sourceParagraph": "p117",
+      "resolution": "event",
+      "eventId": "chronology-p117"
+    },
+    {
+      "sourceParagraph": "p118",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-rebekah"
+      ]
+    },
+    {
+      "sourceParagraph": "p119",
+      "resolution": "event",
+      "eventId": "chronology-p119"
+    },
+    {
+      "sourceParagraph": "p120",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-sarah"
+      ]
+    },
+    {
+      "sourceParagraph": "p121",
+      "resolution": "event",
+      "eventId": "chronology-p121"
+    },
+    {
+      "sourceParagraph": "p122",
+      "resolution": "event",
+      "eventId": "chronology-p122"
+    },
+    {
+      "sourceParagraph": "p123",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-jacob"
+      ]
+    },
+    {
+      "sourceParagraph": "p124",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-abraham"
+      ]
+    },
+    {
+      "sourceParagraph": "p125",
+      "resolution": "event",
+      "eventId": "chronology-p125"
+    },
+    {
+      "sourceParagraph": "p126",
+      "resolution": "event",
+      "eventId": "chronology-p126"
+    },
+    {
+      "sourceParagraph": "p127",
+      "resolution": "event",
+      "eventId": "chronology-p127"
+    },
+    {
+      "sourceParagraph": "p128",
+      "resolution": "event",
+      "eventId": "chronology-p128"
+    },
+    {
+      "sourceParagraph": "p129",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-rebekah"
+      ]
+    },
+    {
+      "sourceParagraph": "p130",
+      "resolution": "event",
+      "eventId": "chronology-p130"
+    },
+    {
+      "sourceParagraph": "p131",
+      "resolution": "event",
+      "eventId": "chronology-p131"
+    },
+    {
+      "sourceParagraph": "p132",
+      "resolution": "event",
+      "eventId": "chronology-p132"
+    },
+    {
+      "sourceParagraph": "p133",
+      "resolution": "event",
+      "eventId": "chronology-p133"
+    },
+    {
+      "sourceParagraph": "p134",
+      "resolution": "event",
+      "eventId": "chronology-p134"
+    },
+    {
+      "sourceParagraph": "p135",
+      "resolution": "event",
+      "eventId": "chronology-p135"
+    },
+    {
+      "sourceParagraph": "p136",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-joseph"
+      ]
+    },
+    {
+      "sourceParagraph": "p137",
+      "resolution": "event",
+      "eventId": "chronology-p137"
+    },
+    {
+      "sourceParagraph": "p138",
+      "resolution": "event",
+      "eventId": "chronology-p138"
+    },
+    {
+      "sourceParagraph": "p139",
+      "resolution": "event",
+      "eventId": "chronology-p139"
+    },
+    {
+      "sourceParagraph": "p140",
+      "resolution": "event",
+      "eventId": "chronology-p140"
+    },
+    {
+      "sourceParagraph": "p141",
+      "resolution": "event",
+      "eventId": "chronology-p141"
+    },
+    {
+      "sourceParagraph": "p142",
+      "resolution": "event",
+      "eventId": "chronology-p142"
+    },
+    {
+      "sourceParagraph": "p143",
+      "resolution": "event",
+      "eventId": "chronology-p143"
+    },
+    {
+      "sourceParagraph": "p144",
+      "resolution": "event",
+      "eventId": "chronology-p144"
+    },
+    {
+      "sourceParagraph": "p145",
+      "resolution": "event",
+      "eventId": "chronology-p145"
+    },
+    {
+      "sourceParagraph": "p146",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-jacob-enters-egypt"
+      ]
+    },
+    {
+      "sourceParagraph": "p147",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-jacob"
+      ]
+    },
+    {
+      "sourceParagraph": "p148",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-joseph"
+      ]
+    },
+    {
+      "sourceParagraph": "p149",
+      "resolution": "event",
+      "eventId": "chronology-p149"
+    },
+    {
+      "sourceParagraph": "p150",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "power-egypt"
+      ]
+    },
+    {
+      "sourceParagraph": "p151",
+      "resolution": "event",
+      "eventId": "chronology-p151"
+    },
+    {
+      "sourceParagraph": "p152",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-moses"
+      ]
+    },
+    {
+      "sourceParagraph": "p153",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-joshua"
+      ]
+    },
+    {
+      "sourceParagraph": "p154",
+      "resolution": "event",
+      "eventId": "chronology-p154"
+    },
+    {
+      "sourceParagraph": "p155",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-caleb"
+      ]
+    },
+    {
+      "sourceParagraph": "p156",
+      "resolution": "event",
+      "eventId": "chronology-p156"
+    },
+    {
+      "sourceParagraph": "p157",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-exodus"
+      ]
+    },
+    {
+      "sourceParagraph": "p158",
+      "resolution": "event",
+      "eventId": "chronology-p158"
+    },
+    {
+      "sourceParagraph": "p159",
+      "resolution": "event",
+      "eventId": "chronology-p159"
+    },
+    {
+      "sourceParagraph": "p160",
+      "resolution": "event",
+      "eventId": "chronology-p160"
+    },
+    {
+      "sourceParagraph": "p161",
+      "resolution": "event",
+      "eventId": "chronology-p161"
+    },
+    {
+      "sourceParagraph": "p162",
+      "resolution": "event",
+      "eventId": "chronology-p162"
+    },
+    {
+      "sourceParagraph": "p163",
+      "resolution": "event",
+      "eventId": "chronology-p163"
+    },
+    {
+      "sourceParagraph": "p164",
+      "resolution": "event",
+      "eventId": "chronology-p164"
+    },
+    {
+      "sourceParagraph": "p165",
+      "resolution": "event",
+      "eventId": "chronology-p165"
+    },
+    {
+      "sourceParagraph": "p166",
+      "resolution": "event",
+      "eventId": "chronology-p166"
+    },
+    {
+      "sourceParagraph": "p167",
+      "resolution": "event",
+      "eventId": "chronology-p167"
+    },
+    {
+      "sourceParagraph": "p168",
+      "resolution": "event",
+      "eventId": "chronology-p168"
+    },
+    {
+      "sourceParagraph": "p169",
+      "resolution": "event",
+      "eventId": "chronology-p169"
+    },
+    {
+      "sourceParagraph": "p170",
+      "resolution": "event",
+      "eventId": "chronology-p170"
+    },
+    {
+      "sourceParagraph": "p171",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-rahab"
+      ]
+    },
+    {
+      "sourceParagraph": "p172",
+      "resolution": "event",
+      "eventId": "chronology-p172"
+    },
+    {
+      "sourceParagraph": "p173",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-miriam"
+      ]
+    },
+    {
+      "sourceParagraph": "p174",
+      "resolution": "event",
+      "eventId": "chronology-p174"
+    },
+    {
+      "sourceParagraph": "p175",
+      "resolution": "event",
+      "eventId": "chronology-p175"
+    },
+    {
+      "sourceParagraph": "p176",
+      "resolution": "event",
+      "eventId": "chronology-p176"
+    },
+    {
+      "sourceParagraph": "p177",
+      "resolution": "event",
+      "eventId": "chronology-p177"
+    },
+    {
+      "sourceParagraph": "p178",
+      "resolution": "event",
+      "eventId": "chronology-p178"
+    },
+    {
+      "sourceParagraph": "p179",
+      "resolution": "event",
+      "eventId": "chronology-p179"
+    },
+    {
+      "sourceParagraph": "p180",
+      "resolution": "event",
+      "eventId": "chronology-p180"
+    },
+    {
+      "sourceParagraph": "p181",
+      "resolution": "event",
+      "eventId": "chronology-p181"
+    },
+    {
+      "sourceParagraph": "p182",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-moses"
+      ]
+    },
+    {
+      "sourceParagraph": "p183",
+      "resolution": "event",
+      "eventId": "chronology-p183"
+    },
+    {
+      "sourceParagraph": "p184",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-canaan"
+      ]
+    },
+    {
+      "sourceParagraph": "p185",
+      "resolution": "event",
+      "eventId": "chronology-p185"
+    },
+    {
+      "sourceParagraph": "p186",
+      "resolution": "event",
+      "eventId": "chronology-p186"
+    },
+    {
+      "sourceParagraph": "p187",
+      "resolution": "event",
+      "eventId": "chronology-p187"
+    },
+    {
+      "sourceParagraph": "p188",
+      "resolution": "event",
+      "eventId": "chronology-p188"
+    },
+    {
+      "sourceParagraph": "p189",
+      "resolution": "event",
+      "eventId": "chronology-p189"
+    },
+    {
+      "sourceParagraph": "p190",
+      "resolution": "event",
+      "eventId": "chronology-p190"
+    },
+    {
+      "sourceParagraph": "p191",
+      "resolution": "event",
+      "eventId": "chronology-p191"
+    },
+    {
+      "sourceParagraph": "p192",
+      "resolution": "event",
+      "eventId": "chronology-p192"
+    },
+    {
+      "sourceParagraph": "p193",
+      "resolution": "event",
+      "eventId": "chronology-p193"
+    },
+    {
+      "sourceParagraph": "p194",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-joshua"
+      ]
+    },
+    {
+      "sourceParagraph": "p195",
+      "resolution": "event",
+      "eventId": "chronology-p195"
+    },
+    {
+      "sourceParagraph": "p196",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-caleb"
+      ]
+    },
+    {
+      "sourceParagraph": "p197",
+      "resolution": "event",
+      "eventId": "chronology-p197"
+    },
+    {
+      "sourceParagraph": "p198",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-rahab"
+      ]
+    },
+    {
+      "sourceParagraph": "p199",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-samuel"
+      ]
+    },
+    {
+      "sourceParagraph": "p200",
+      "resolution": "event",
+      "eventId": "chronology-p200"
+    },
+    {
+      "sourceParagraph": "p201",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-saul-anointed"
+      ]
+    },
+    {
+      "sourceParagraph": "p202",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-david"
+      ]
+    },
+    {
+      "sourceParagraph": "p203",
+      "resolution": "event",
+      "eventId": "chronology-p203"
+    },
+    {
+      "sourceParagraph": "p204",
+      "resolution": "event",
+      "eventId": "chronology-p204"
+    },
+    {
+      "sourceParagraph": "p205",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-samuel"
+      ]
+    },
+    {
+      "sourceParagraph": "p206",
+      "resolution": "event",
+      "eventId": "chronology-p206"
+    },
+    {
+      "sourceParagraph": "p207",
+      "resolution": "event",
+      "eventId": "chronology-p207"
+    },
+    {
+      "sourceParagraph": "p208",
+      "resolution": "event",
+      "eventId": "chronology-p208"
+    },
+    {
+      "sourceParagraph": "p209",
+      "resolution": "event",
+      "eventId": "chronology-p209"
+    },
+    {
+      "sourceParagraph": "p210",
+      "resolution": "event",
+      "eventId": "chronology-p210"
+    },
+    {
+      "sourceParagraph": "p211",
+      "resolution": "event",
+      "eventId": "chronology-p211"
+    },
+    {
+      "sourceParagraph": "p212",
+      "resolution": "event",
+      "eventId": "chronology-p212"
+    },
+    {
+      "sourceParagraph": "p213",
+      "resolution": "event",
+      "eventId": "chronology-p213"
+    },
+    {
+      "sourceParagraph": "p214",
+      "resolution": "event",
+      "eventId": "chronology-p214"
+    },
+    {
+      "sourceParagraph": "p215",
+      "resolution": "event",
+      "eventId": "chronology-p215"
+    },
+    {
+      "sourceParagraph": "p216",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-david"
+      ]
+    },
+    {
+      "sourceParagraph": "p217",
+      "resolution": "event",
+      "eventId": "chronology-p217"
+    },
+    {
+      "sourceParagraph": "p218",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-solomons-temple"
+      ]
+    },
+    {
+      "sourceParagraph": "p219",
+      "resolution": "event",
+      "eventId": "chronology-p219"
+    },
+    {
+      "sourceParagraph": "p220",
+      "resolution": "event",
+      "eventId": "chronology-p220"
+    },
+    {
+      "sourceParagraph": "p221",
+      "resolution": "event",
+      "eventId": "chronology-p221"
+    },
+    {
+      "sourceParagraph": "p222",
+      "resolution": "event",
+      "eventId": "chronology-p222"
+    },
+    {
+      "sourceParagraph": "p223",
+      "resolution": "event",
+      "eventId": "chronology-p223"
+    },
+    {
+      "sourceParagraph": "p224",
+      "resolution": "event",
+      "eventId": "chronology-p224"
+    },
+    {
+      "sourceParagraph": "p225",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-kingdom-divided"
+      ]
+    },
+    {
+      "sourceParagraph": "p226",
+      "resolution": "event",
+      "eventId": "chronology-p226"
+    },
+    {
+      "sourceParagraph": "p227",
+      "resolution": "event",
+      "eventId": "chronology-p227"
+    },
+    {
+      "sourceParagraph": "p228",
+      "resolution": "event",
+      "eventId": "chronology-p228"
+    },
+    {
+      "sourceParagraph": "p229",
+      "resolution": "event",
+      "eventId": "chronology-p229"
+    },
+    {
+      "sourceParagraph": "p230",
+      "resolution": "event",
+      "eventId": "chronology-p230"
+    },
+    {
+      "sourceParagraph": "p231",
+      "resolution": "event",
+      "eventId": "chronology-p231"
+    },
+    {
+      "sourceParagraph": "p232",
+      "resolution": "event",
+      "eventId": "chronology-p232"
+    },
+    {
+      "sourceParagraph": "p233",
+      "resolution": "event",
+      "eventId": "chronology-p233"
+    },
+    {
+      "sourceParagraph": "p234",
+      "resolution": "event",
+      "eventId": "chronology-p234"
+    },
+    {
+      "sourceParagraph": "p235",
+      "resolution": "event",
+      "eventId": "chronology-p235"
+    },
+    {
+      "sourceParagraph": "p236",
+      "resolution": "event",
+      "eventId": "chronology-p236"
+    },
+    {
+      "sourceParagraph": "p237",
+      "resolution": "event",
+      "eventId": "chronology-p237"
+    },
+    {
+      "sourceParagraph": "p238",
+      "resolution": "event",
+      "eventId": "chronology-p238"
+    },
+    {
+      "sourceParagraph": "p239",
+      "resolution": "event",
+      "eventId": "chronology-p239"
+    },
+    {
+      "sourceParagraph": "p240",
+      "resolution": "event",
+      "eventId": "chronology-p240"
+    },
+    {
+      "sourceParagraph": "p241",
+      "resolution": "event",
+      "eventId": "chronology-p241"
+    },
+    {
+      "sourceParagraph": "p242",
+      "resolution": "event",
+      "eventId": "chronology-p242"
+    },
+    {
+      "sourceParagraph": "p243",
+      "resolution": "event",
+      "eventId": "chronology-p243"
+    },
+    {
+      "sourceParagraph": "p244",
+      "resolution": "event",
+      "eventId": "chronology-p244"
+    },
+    {
+      "sourceParagraph": "p245",
+      "resolution": "event",
+      "eventId": "chronology-p245"
+    },
+    {
+      "sourceParagraph": "p246",
+      "resolution": "event",
+      "eventId": "chronology-p246"
+    },
+    {
+      "sourceParagraph": "p247",
+      "resolution": "event",
+      "eventId": "chronology-p247"
+    },
+    {
+      "sourceParagraph": "p248",
+      "resolution": "event",
+      "eventId": "chronology-p248"
+    },
+    {
+      "sourceParagraph": "p249",
+      "resolution": "event",
+      "eventId": "chronology-p249"
+    },
+    {
+      "sourceParagraph": "p250",
+      "resolution": "event",
+      "eventId": "chronology-p250"
+    },
+    {
+      "sourceParagraph": "p251",
+      "resolution": "event",
+      "eventId": "chronology-p251"
+    },
+    {
+      "sourceParagraph": "p252",
+      "resolution": "event",
+      "eventId": "chronology-p252"
+    },
+    {
+      "sourceParagraph": "p253",
+      "resolution": "event",
+      "eventId": "chronology-p253"
+    },
+    {
+      "sourceParagraph": "p254",
+      "resolution": "event",
+      "eventId": "chronology-p254"
+    },
+    {
+      "sourceParagraph": "p255",
+      "resolution": "event",
+      "eventId": "chronology-p255"
+    },
+    {
+      "sourceParagraph": "p256",
+      "resolution": "event",
+      "eventId": "chronology-p256"
+    },
+    {
+      "sourceParagraph": "p257",
+      "resolution": "event",
+      "eventId": "chronology-p257"
+    },
+    {
+      "sourceParagraph": "p258",
+      "resolution": "event",
+      "eventId": "chronology-p258"
+    },
+    {
+      "sourceParagraph": "p259",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "power-assyria"
+      ]
+    },
+    {
+      "sourceParagraph": "p260",
+      "resolution": "event",
+      "eventId": "chronology-p260"
+    },
+    {
+      "sourceParagraph": "p261",
+      "resolution": "event",
+      "eventId": "chronology-p261"
+    },
+    {
+      "sourceParagraph": "p262",
+      "resolution": "event",
+      "eventId": "chronology-p262"
+    },
+    {
+      "sourceParagraph": "p263",
+      "resolution": "event",
+      "eventId": "chronology-p263"
+    },
+    {
+      "sourceParagraph": "p264",
+      "resolution": "event",
+      "eventId": "chronology-p264"
+    },
+    {
+      "sourceParagraph": "p265",
+      "resolution": "event",
+      "eventId": "chronology-p265"
+    },
+    {
+      "sourceParagraph": "p266",
+      "resolution": "event",
+      "eventId": "chronology-p266"
+    },
+    {
+      "sourceParagraph": "p267",
+      "resolution": "event",
+      "eventId": "chronology-p267"
+    },
+    {
+      "sourceParagraph": "p268",
+      "resolution": "event",
+      "eventId": "chronology-p268"
+    },
+    {
+      "sourceParagraph": "p269",
+      "resolution": "event",
+      "eventId": "chronology-p269"
+    },
+    {
+      "sourceParagraph": "p270",
+      "resolution": "event",
+      "eventId": "chronology-p270"
+    },
+    {
+      "sourceParagraph": "p271",
+      "resolution": "event",
+      "eventId": "chronology-p271"
+    },
+    {
+      "sourceParagraph": "p272",
+      "resolution": "event",
+      "eventId": "chronology-p272"
+    },
+    {
+      "sourceParagraph": "p273",
+      "resolution": "event",
+      "eventId": "chronology-p273"
+    },
+    {
+      "sourceParagraph": "p274",
+      "resolution": "event",
+      "eventId": "chronology-p274"
+    },
+    {
+      "sourceParagraph": "p275",
+      "resolution": "event",
+      "eventId": "chronology-p275"
+    },
+    {
+      "sourceParagraph": "p276",
+      "resolution": "event",
+      "eventId": "chronology-p276"
+    },
+    {
+      "sourceParagraph": "p277",
+      "resolution": "event",
+      "eventId": "chronology-p277"
+    },
+    {
+      "sourceParagraph": "p278",
+      "resolution": "event",
+      "eventId": "chronology-p278"
+    },
+    {
+      "sourceParagraph": "p279",
+      "resolution": "event",
+      "eventId": "chronology-p279"
+    },
+    {
+      "sourceParagraph": "p280",
+      "resolution": "event",
+      "eventId": "chronology-p280"
+    },
+    {
+      "sourceParagraph": "p281",
+      "resolution": "event",
+      "eventId": "chronology-p281"
+    },
+    {
+      "sourceParagraph": "p282",
+      "resolution": "event",
+      "eventId": "chronology-p282"
+    },
+    {
+      "sourceParagraph": "p283",
+      "resolution": "event",
+      "eventId": "chronology-p283"
+    },
+    {
+      "sourceParagraph": "p284",
+      "resolution": "event",
+      "eventId": "chronology-p284"
+    },
+    {
+      "sourceParagraph": "p285",
+      "resolution": "event",
+      "eventId": "chronology-p285"
+    },
+    {
+      "sourceParagraph": "p286",
+      "resolution": "event",
+      "eventId": "chronology-p286"
+    },
+    {
+      "sourceParagraph": "p287",
+      "resolution": "event",
+      "eventId": "chronology-p287"
+    },
+    {
+      "sourceParagraph": "p288",
+      "resolution": "event",
+      "eventId": "chronology-p288"
+    },
+    {
+      "sourceParagraph": "p289",
+      "resolution": "event",
+      "eventId": "chronology-p289"
+    },
+    {
+      "sourceParagraph": "p290",
+      "resolution": "event",
+      "eventId": "chronology-p290"
+    },
+    {
+      "sourceParagraph": "p291",
+      "resolution": "event",
+      "eventId": "chronology-p291"
+    },
+    {
+      "sourceParagraph": "p292",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-assyria-defeats-israel"
+      ]
+    },
+    {
+      "sourceParagraph": "p293",
+      "resolution": "event",
+      "eventId": "chronology-p293"
+    },
+    {
+      "sourceParagraph": "p294",
+      "resolution": "event",
+      "eventId": "chronology-p294"
+    },
+    {
+      "sourceParagraph": "p295",
+      "resolution": "event",
+      "eventId": "chronology-p295"
+    },
+    {
+      "sourceParagraph": "p296",
+      "resolution": "event",
+      "eventId": "chronology-p296"
+    },
+    {
+      "sourceParagraph": "p297",
+      "resolution": "event",
+      "eventId": "chronology-p297"
+    },
+    {
+      "sourceParagraph": "p298",
+      "resolution": "event",
+      "eventId": "chronology-p298"
+    },
+    {
+      "sourceParagraph": "p299",
+      "resolution": "event",
+      "eventId": "chronology-p299"
+    },
+    {
+      "sourceParagraph": "p300",
+      "resolution": "event",
+      "eventId": "chronology-p300"
+    },
+    {
+      "sourceParagraph": "p301",
+      "resolution": "event",
+      "eventId": "chronology-p301"
+    },
+    {
+      "sourceParagraph": "p302",
+      "resolution": "event",
+      "eventId": "chronology-p302"
+    },
+    {
+      "sourceParagraph": "p303",
+      "resolution": "event",
+      "eventId": "chronology-p303"
+    },
+    {
+      "sourceParagraph": "p304",
+      "resolution": "event",
+      "eventId": "chronology-p304"
+    },
+    {
+      "sourceParagraph": "p305",
+      "resolution": "event",
+      "eventId": "chronology-p305"
+    },
+    {
+      "sourceParagraph": "p306",
+      "resolution": "event",
+      "eventId": "chronology-p306"
+    },
+    {
+      "sourceParagraph": "p307",
+      "resolution": "event",
+      "eventId": "chronology-p307"
+    },
+    {
+      "sourceParagraph": "p308",
+      "resolution": "event",
+      "eventId": "chronology-p308"
+    },
+    {
+      "sourceParagraph": "p309",
+      "resolution": "event",
+      "eventId": "chronology-p309"
+    },
+    {
+      "sourceParagraph": "p310",
+      "resolution": "event",
+      "eventId": "chronology-p310"
+    },
+    {
+      "sourceParagraph": "p311",
+      "resolution": "event",
+      "eventId": "chronology-p311"
+    },
+    {
+      "sourceParagraph": "p312",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-josiah"
+      ]
+    },
+    {
+      "sourceParagraph": "p313",
+      "resolution": "event",
+      "eventId": "chronology-p313"
+    },
+    {
+      "sourceParagraph": "p314",
+      "resolution": "event",
+      "eventId": "chronology-p314"
+    },
+    {
+      "sourceParagraph": "p315",
+      "resolution": "event",
+      "eventId": "chronology-p315"
+    },
+    {
+      "sourceParagraph": "p316",
+      "resolution": "event",
+      "eventId": "chronology-p316"
+    },
+    {
+      "sourceParagraph": "p317",
+      "resolution": "event",
+      "eventId": "chronology-p317"
+    },
+    {
+      "sourceParagraph": "p318",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "power-babylon"
+      ]
+    },
+    {
+      "sourceParagraph": "p319",
+      "resolution": "event",
+      "eventId": "chronology-p319"
+    },
+    {
+      "sourceParagraph": "p320",
+      "resolution": "event",
+      "eventId": "chronology-p320"
+    },
+    {
+      "sourceParagraph": "p321",
+      "resolution": "event",
+      "eventId": "chronology-p321"
+    },
+    {
+      "sourceParagraph": "p322",
+      "resolution": "event",
+      "eventId": "chronology-p322"
+    },
+    {
+      "sourceParagraph": "p323",
+      "resolution": "event",
+      "eventId": "chronology-p323"
+    },
+    {
+      "sourceParagraph": "p324",
+      "resolution": "event",
+      "eventId": "chronology-p324"
+    },
+    {
+      "sourceParagraph": "p325",
+      "resolution": "event",
+      "eventId": "chronology-p325"
+    },
+    {
+      "sourceParagraph": "p326",
+      "resolution": "event",
+      "eventId": "chronology-p326"
+    },
+    {
+      "sourceParagraph": "p327",
+      "resolution": "event",
+      "eventId": "chronology-p327"
+    },
+    {
+      "sourceParagraph": "p328",
+      "resolution": "event",
+      "eventId": "chronology-p328"
+    },
+    {
+      "sourceParagraph": "p329",
+      "resolution": "event",
+      "eventId": "chronology-p329"
+    },
+    {
+      "sourceParagraph": "p330",
+      "resolution": "event",
+      "eventId": "chronology-p330"
+    },
+    {
+      "sourceParagraph": "p331",
+      "resolution": "event",
+      "eventId": "chronology-p331"
+    },
+    {
+      "sourceParagraph": "p332",
+      "resolution": "event",
+      "eventId": "chronology-p332"
+    },
+    {
+      "sourceParagraph": "p333",
+      "resolution": "event",
+      "eventId": "chronology-p333"
+    },
+    {
+      "sourceParagraph": "p334",
+      "resolution": "event",
+      "eventId": "chronology-p334"
+    },
+    {
+      "sourceParagraph": "p335",
+      "resolution": "event",
+      "eventId": "chronology-p335"
+    },
+    {
+      "sourceParagraph": "p336",
+      "resolution": "event",
+      "eventId": "chronology-p336"
+    },
+    {
+      "sourceParagraph": "p337",
+      "resolution": "event",
+      "eventId": "chronology-p337"
+    },
+    {
+      "sourceParagraph": "p338",
+      "resolution": "event",
+      "eventId": "chronology-p338"
+    },
+    {
+      "sourceParagraph": "p339",
+      "resolution": "event",
+      "eventId": "chronology-p339"
+    },
+    {
+      "sourceParagraph": "p340",
+      "resolution": "event",
+      "eventId": "chronology-p340"
+    },
+    {
+      "sourceParagraph": "p341",
+      "resolution": "event",
+      "eventId": "chronology-p341"
+    },
+    {
+      "sourceParagraph": "p342",
+      "resolution": "event",
+      "eventId": "chronology-p342"
+    },
+    {
+      "sourceParagraph": "p343",
+      "resolution": "event",
+      "eventId": "chronology-p343"
+    },
+    {
+      "sourceParagraph": "p344",
+      "resolution": "event",
+      "eventId": "chronology-p344"
+    },
+    {
+      "sourceParagraph": "p345",
+      "resolution": "event",
+      "eventId": "chronology-p345"
+    },
+    {
+      "sourceParagraph": "p346",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-jerusalem-destroyed"
+      ]
+    },
+    {
+      "sourceParagraph": "p347",
+      "resolution": "event",
+      "eventId": "chronology-p347"
+    },
+    {
+      "sourceParagraph": "p348",
+      "resolution": "event",
+      "eventId": "chronology-p348"
+    },
+    {
+      "sourceParagraph": "p349",
+      "resolution": "event",
+      "eventId": "chronology-p349"
+    },
+    {
+      "sourceParagraph": "p350",
+      "resolution": "event",
+      "eventId": "chronology-p350"
+    },
+    {
+      "sourceParagraph": "p351",
+      "resolution": "event",
+      "eventId": "chronology-p351"
+    },
+    {
+      "sourceParagraph": "p352",
+      "resolution": "event",
+      "eventId": "chronology-p352"
+    },
+    {
+      "sourceParagraph": "p353",
+      "resolution": "event",
+      "eventId": "chronology-p353"
+    },
+    {
+      "sourceParagraph": "p354",
+      "resolution": "event",
+      "eventId": "chronology-p354"
+    },
+    {
+      "sourceParagraph": "p355",
+      "resolution": "event",
+      "eventId": "chronology-p355"
+    },
+    {
+      "sourceParagraph": "p356",
+      "resolution": "event",
+      "eventId": "chronology-p356"
+    },
+    {
+      "sourceParagraph": "p357",
+      "resolution": "event",
+      "eventId": "chronology-p357"
+    },
+    {
+      "sourceParagraph": "p358",
+      "resolution": "event",
+      "eventId": "chronology-p358"
+    },
+    {
+      "sourceParagraph": "p359",
+      "resolution": "event",
+      "eventId": "chronology-p359"
+    },
+    {
+      "sourceParagraph": "p360",
+      "resolution": "event",
+      "eventId": "chronology-p360"
+    },
+    {
+      "sourceParagraph": "p361",
+      "resolution": "event",
+      "eventId": "chronology-p361"
+    },
+    {
+      "sourceParagraph": "p362",
+      "resolution": "event",
+      "eventId": "chronology-p362"
+    },
+    {
+      "sourceParagraph": "p363",
+      "resolution": "event",
+      "eventId": "chronology-p363"
+    },
+    {
+      "sourceParagraph": "p364",
+      "resolution": "event",
+      "eventId": "chronology-p364"
+    },
+    {
+      "sourceParagraph": "p365",
+      "resolution": "event",
+      "eventId": "chronology-p365"
+    },
+    {
+      "sourceParagraph": "p366",
+      "resolution": "event",
+      "eventId": "chronology-p366"
+    },
+    {
+      "sourceParagraph": "p367",
+      "resolution": "event",
+      "eventId": "chronology-p367"
+    },
+    {
+      "sourceParagraph": "p368",
+      "resolution": "event",
+      "eventId": "chronology-p368"
+    },
+    {
+      "sourceParagraph": "p369",
+      "resolution": "event",
+      "eventId": "chronology-p369"
+    },
+    {
+      "sourceParagraph": "p370",
+      "resolution": "event",
+      "eventId": "chronology-p370"
+    },
+    {
+      "sourceParagraph": "p371",
+      "resolution": "event",
+      "eventId": "chronology-p371"
+    },
+    {
+      "sourceParagraph": "p372",
+      "resolution": "event",
+      "eventId": "chronology-p372"
+    },
+    {
+      "sourceParagraph": "p373",
+      "resolution": "event",
+      "eventId": "chronology-p373"
+    },
+    {
+      "sourceParagraph": "p374",
+      "resolution": "event",
+      "eventId": "chronology-p374"
+    },
+    {
+      "sourceParagraph": "p375",
+      "resolution": "event",
+      "eventId": "chronology-p375"
+    },
+    {
+      "sourceParagraph": "p376",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "power-medo-persia"
+      ]
+    },
+    {
+      "sourceParagraph": "p377",
+      "resolution": "event",
+      "eventId": "chronology-p377"
+    },
+    {
+      "sourceParagraph": "p378",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-jews-released"
+      ]
+    },
+    {
+      "sourceParagraph": "p379",
+      "resolution": "event",
+      "eventId": "chronology-p379"
+    },
+    {
+      "sourceParagraph": "p380",
+      "resolution": "event",
+      "eventId": "chronology-p380"
+    },
+    {
+      "sourceParagraph": "p381",
+      "resolution": "event",
+      "eventId": "chronology-p381"
+    },
+    {
+      "sourceParagraph": "p382",
+      "resolution": "event",
+      "eventId": "chronology-p382"
+    },
+    {
+      "sourceParagraph": "p383",
+      "resolution": "event",
+      "eventId": "chronology-p383"
+    },
+    {
+      "sourceParagraph": "p384",
+      "resolution": "event",
+      "eventId": "chronology-p384"
+    },
+    {
+      "sourceParagraph": "p385",
+      "resolution": "event",
+      "eventId": "chronology-p385"
+    },
+    {
+      "sourceParagraph": "p386",
+      "resolution": "event",
+      "eventId": "chronology-p386"
+    },
+    {
+      "sourceParagraph": "p387",
+      "resolution": "event",
+      "eventId": "chronology-p387"
+    },
+    {
+      "sourceParagraph": "p388",
+      "resolution": "event",
+      "eventId": "chronology-p388"
+    },
+    {
+      "sourceParagraph": "p389",
+      "resolution": "event",
+      "eventId": "chronology-p389"
+    },
+    {
+      "sourceParagraph": "p390",
+      "resolution": "event",
+      "eventId": "chronology-p390"
+    },
+    {
+      "sourceParagraph": "p391",
+      "resolution": "event",
+      "eventId": "chronology-p391"
+    },
+    {
+      "sourceParagraph": "p392",
+      "resolution": "event",
+      "eventId": "chronology-p392"
+    },
+    {
+      "sourceParagraph": "p393",
+      "resolution": "event",
+      "eventId": "chronology-p393"
+    },
+    {
+      "sourceParagraph": "p394",
+      "resolution": "event",
+      "eventId": "chronology-p394"
+    },
+    {
+      "sourceParagraph": "p395",
+      "resolution": "event",
+      "eventId": "chronology-p395"
+    },
+    {
+      "sourceParagraph": "p396",
+      "resolution": "event",
+      "eventId": "chronology-p396"
+    },
+    {
+      "sourceParagraph": "p397",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-temple-rebuilt"
+      ]
+    },
+    {
+      "sourceParagraph": "p398",
+      "resolution": "event",
+      "eventId": "chronology-p398"
+    },
+    {
+      "sourceParagraph": "p399",
+      "resolution": "event",
+      "eventId": "chronology-p399"
+    },
+    {
+      "sourceParagraph": "p400",
+      "resolution": "event",
+      "eventId": "chronology-p400"
+    },
+    {
+      "sourceParagraph": "p401",
+      "resolution": "event",
+      "eventId": "chronology-p401"
+    },
+    {
+      "sourceParagraph": "p402",
+      "resolution": "event",
+      "eventId": "chronology-p402"
+    },
+    {
+      "sourceParagraph": "p403",
+      "resolution": "event",
+      "eventId": "chronology-p403"
+    },
+    {
+      "sourceParagraph": "p404",
+      "resolution": "event",
+      "eventId": "chronology-p404"
+    },
+    {
+      "sourceParagraph": "p405",
+      "resolution": "event",
+      "eventId": "chronology-p405"
+    },
+    {
+      "sourceParagraph": "p406",
+      "resolution": "event",
+      "eventId": "chronology-p406"
+    },
+    {
+      "sourceParagraph": "p407",
+      "resolution": "event",
+      "eventId": "chronology-p407"
+    },
+    {
+      "sourceParagraph": "p408",
+      "resolution": "event",
+      "eventId": "chronology-p408"
+    },
+    {
+      "sourceParagraph": "p409",
+      "resolution": "event",
+      "eventId": "chronology-p409"
+    },
+    {
+      "sourceParagraph": "p410",
+      "resolution": "event",
+      "eventId": "chronology-p410"
+    },
+    {
+      "sourceParagraph": "p411",
+      "resolution": "event",
+      "eventId": "chronology-p411"
+    },
+    {
+      "sourceParagraph": "p412",
+      "resolution": "event",
+      "eventId": "chronology-p412"
+    },
+    {
+      "sourceParagraph": "p413",
+      "resolution": "event",
+      "eventId": "chronology-p413"
+    },
+    {
+      "sourceParagraph": "p414",
+      "resolution": "event",
+      "eventId": "chronology-p414"
+    },
+    {
+      "sourceParagraph": "p415",
+      "resolution": "event",
+      "eventId": "chronology-p415"
+    },
+    {
+      "sourceParagraph": "p416",
+      "resolution": "event",
+      "eventId": "chronology-p416"
+    },
+    {
+      "sourceParagraph": "p417",
+      "resolution": "event",
+      "eventId": "chronology-p417"
+    },
+    {
+      "sourceParagraph": "p418",
+      "resolution": "event",
+      "eventId": "chronology-p418"
+    },
+    {
+      "sourceParagraph": "p419",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "event-walls-completed"
+      ]
+    },
+    {
+      "sourceParagraph": "p420",
+      "resolution": "event",
+      "eventId": "chronology-p420"
+    },
+    {
+      "sourceParagraph": "p421",
+      "resolution": "event",
+      "eventId": "chronology-p421"
+    },
+    {
+      "sourceParagraph": "p422",
+      "resolution": "event",
+      "eventId": "chronology-p422"
+    },
+    {
+      "sourceParagraph": "p423",
+      "resolution": "event",
+      "eventId": "chronology-p423"
+    },
+    {
+      "sourceParagraph": "p424",
+      "resolution": "event",
+      "eventId": "chronology-p424"
+    },
+    {
+      "sourceParagraph": "p425",
+      "resolution": "event",
+      "eventId": "chronology-p425"
+    },
+    {
+      "sourceParagraph": "p426",
+      "resolution": "event",
+      "eventId": "chronology-p426"
+    },
+    {
+      "sourceParagraph": "p427",
+      "resolution": "event",
+      "eventId": "chronology-p427"
+    },
+    {
+      "sourceParagraph": "p428",
+      "resolution": "event",
+      "eventId": "chronology-p428"
+    },
+    {
+      "sourceParagraph": "p429",
+      "resolution": "event",
+      "eventId": "chronology-p429"
+    },
+    {
+      "sourceParagraph": "p430",
+      "resolution": "event",
+      "eventId": "chronology-p430"
+    },
+    {
+      "sourceParagraph": "p431",
+      "resolution": "event",
+      "eventId": "chronology-p431"
+    },
+    {
+      "sourceParagraph": "p432",
+      "resolution": "event",
+      "eventId": "chronology-p432"
+    },
+    {
+      "sourceParagraph": "p433",
+      "resolution": "event",
+      "eventId": "chronology-p433"
+    },
+    {
+      "sourceParagraph": "p434",
+      "resolution": "event",
+      "eventId": "chronology-p434"
+    },
+    {
+      "sourceParagraph": "p435",
+      "resolution": "event",
+      "eventId": "chronology-p435"
+    },
+    {
+      "sourceParagraph": "p436",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "power-greece"
+      ]
+    },
+    {
+      "sourceParagraph": "p437",
+      "resolution": "event",
+      "eventId": "chronology-p437"
+    },
+    {
+      "sourceParagraph": "p438",
+      "resolution": "event",
+      "eventId": "chronology-p438"
+    },
+    {
+      "sourceParagraph": "p439",
+      "resolution": "event",
+      "eventId": "chronology-p439"
+    },
+    {
+      "sourceParagraph": "p440",
+      "resolution": "event",
+      "eventId": "chronology-p440"
+    },
+    {
+      "sourceParagraph": "p441",
+      "resolution": "event",
+      "eventId": "chronology-p441"
+    },
+    {
+      "sourceParagraph": "p442",
+      "resolution": "event",
+      "eventId": "chronology-p442"
+    },
+    {
+      "sourceParagraph": "p443",
+      "resolution": "event",
+      "eventId": "chronology-p443"
+    },
+    {
+      "sourceParagraph": "p444",
+      "resolution": "event",
+      "eventId": "chronology-p444"
+    },
+    {
+      "sourceParagraph": "p445",
+      "resolution": "event",
+      "eventId": "chronology-p445"
+    },
+    {
+      "sourceParagraph": "p446",
+      "resolution": "event",
+      "eventId": "chronology-p446"
+    },
+    {
+      "sourceParagraph": "p447",
+      "resolution": "event",
+      "eventId": "chronology-p447"
+    },
+    {
+      "sourceParagraph": "p448",
+      "resolution": "event",
+      "eventId": "chronology-p448"
+    },
+    {
+      "sourceParagraph": "p449",
+      "resolution": "event",
+      "eventId": "chronology-p449"
+    },
+    {
+      "sourceParagraph": "p450",
+      "resolution": "event",
+      "eventId": "chronology-p450"
+    },
+    {
+      "sourceParagraph": "p451",
+      "resolution": "event",
+      "eventId": "chronology-p451"
+    },
+    {
+      "sourceParagraph": "p452",
+      "resolution": "event",
+      "eventId": "chronology-p452"
+    },
+    {
+      "sourceParagraph": "p453",
+      "resolution": "event",
+      "eventId": "chronology-p453"
+    },
+    {
+      "sourceParagraph": "p454",
+      "resolution": "event",
+      "eventId": "chronology-p454"
+    },
+    {
+      "sourceParagraph": "p455",
+      "resolution": "event",
+      "eventId": "chronology-p455"
+    },
+    {
+      "sourceParagraph": "p456",
+      "resolution": "event",
+      "eventId": "chronology-p456"
+    },
+    {
+      "sourceParagraph": "p457",
+      "resolution": "event",
+      "eventId": "chronology-p457"
+    },
+    {
+      "sourceParagraph": "p458",
+      "resolution": "event",
+      "eventId": "chronology-p458"
+    },
+    {
+      "sourceParagraph": "p459",
+      "resolution": "event",
+      "eventId": "chronology-p459"
+    },
+    {
+      "sourceParagraph": "p460",
+      "resolution": "event",
+      "eventId": "chronology-p460"
+    },
+    {
+      "sourceParagraph": "p461",
+      "resolution": "event",
+      "eventId": "chronology-p461"
+    },
+    {
+      "sourceParagraph": "p462",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-zechariah",
+        "person-elizabeth"
+      ]
+    },
+    {
+      "sourceParagraph": "p463",
+      "resolution": "event",
+      "eventId": "chronology-p463"
+    },
+    {
+      "sourceParagraph": "p464",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "power-rome"
+      ]
+    },
+    {
+      "sourceParagraph": "p465",
+      "resolution": "event",
+      "eventId": "chronology-p465"
+    },
+    {
+      "sourceParagraph": "p466",
+      "resolution": "event",
+      "eventId": "chronology-p466"
+    },
+    {
+      "sourceParagraph": "p467",
+      "resolution": "event",
+      "eventId": "chronology-p467"
+    },
+    {
+      "sourceParagraph": "p468",
+      "resolution": "event",
+      "eventId": "chronology-p468"
+    },
+    {
+      "sourceParagraph": "p469",
+      "resolution": "event",
+      "eventId": "chronology-p469"
+    },
+    {
+      "sourceParagraph": "p470",
+      "resolution": "event",
+      "eventId": "chronology-p470"
+    },
+    {
+      "sourceParagraph": "p471",
+      "resolution": "event",
+      "eventId": "chronology-p471"
+    },
+    {
+      "sourceParagraph": "p472",
+      "resolution": "event",
+      "eventId": "chronology-p472"
+    },
+    {
+      "sourceParagraph": "p473",
+      "resolution": "event",
+      "eventId": "chronology-p473"
+    },
+    {
+      "sourceParagraph": "p474",
+      "resolution": "event",
+      "eventId": "chronology-p474"
+    },
+    {
+      "sourceParagraph": "p475",
+      "resolution": "event",
+      "eventId": "chronology-p475"
+    },
+    {
+      "sourceParagraph": "p476",
+      "resolution": "event",
+      "eventId": "chronology-p476"
+    },
+    {
+      "sourceParagraph": "p477",
+      "resolution": "event",
+      "eventId": "chronology-p477"
+    },
+    {
+      "sourceParagraph": "p478",
+      "resolution": "event",
+      "eventId": "chronology-p478"
+    },
+    {
+      "sourceParagraph": "p479",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-joseph-husband-of-mary"
+      ]
+    },
+    {
+      "sourceParagraph": "p480",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-mary-jesus-mother"
+      ]
+    },
+    {
+      "sourceParagraph": "p481",
+      "resolution": "event",
+      "eventId": "chronology-p481"
+    },
+    {
+      "sourceParagraph": "p482",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-mary-lazarus-sister"
+      ]
+    },
+    {
+      "sourceParagraph": "p483",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-apostle-john"
+      ]
+    },
+    {
+      "sourceParagraph": "p484",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-peter"
+      ]
+    },
+    {
+      "sourceParagraph": "p485",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-barnabas"
+      ]
+    },
+    {
+      "sourceParagraph": "p486",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-mary-magdalene"
+      ]
+    },
+    {
+      "sourceParagraph": "p487",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-stephen"
+      ]
+    },
+    {
+      "sourceParagraph": "p488",
+      "resolution": "event",
+      "eventId": "chronology-p488"
+    },
+    {
+      "sourceParagraph": "p489",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-paul-saul-of-tarsus"
+      ]
+    },
+    {
+      "sourceParagraph": "p490",
+      "resolution": "event",
+      "eventId": "chronology-p490"
+    },
+    {
+      "sourceParagraph": "p491",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-john-the-baptist"
+      ]
+    },
+    {
+      "sourceParagraph": "p492",
+      "resolution": "enrichment",
+      "targetItemIds": [
+        "person-jesus"
+      ]
+    },
+    {
+      "sourceParagraph": "p493",
+      "resolution": "event",
+      "eventId": "chronology-p493"
+    },
+    {
+      "sourceParagraph": "p494",
+      "resolution": "event",
+      "eventId": "chronology-p494"
+    },
+    {
+      "sourceParagraph": "p495",
+      "resolution": "event",
+      "eventId": "chronology-p495"
+    },
+    {
+      "sourceParagraph": "p496",
+      "resolution": "event",
+      "eventId": "chronology-p496"
+    },
+    {
+      "sourceParagraph": "p497",
+      "resolution": "event",
+      "eventId": "chronology-p497"
+    },
+    {
+      "sourceParagraph": "p498",
+      "resolution": "event",
+      "eventId": "chronology-p498"
+    }
+  ]
+}

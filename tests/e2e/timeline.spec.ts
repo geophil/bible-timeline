@@ -183,3 +183,76 @@ test('keeps first-row names visible after scrolling back to the top', async ({ p
   await expect(page.locator('.people-scroll-hint')).toHaveCount(0)
   await expect(page.locator('.person-name').first()).toBeVisible()
 })
+
+test('enables the expanded chronology without duplicating existing events', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByText('chronology')).toHaveCount(0)
+  await page.getByRole('button', { name: 'Filters', exact: true }).click()
+  const layer = page.getByLabel('Expanded chronology', { exact: true })
+  await expect(layer).not.toBeChecked()
+  await layer.check()
+  await expect(page.locator('.stats')).toContainText('368 chronology')
+
+  await page.getByRole('button', { name: 'Filters', exact: true }).click()
+  await page
+    .getByLabel('Search timeline')
+    .fill('Abrahamic covenant takes effect')
+  await expect(page.getByText('1 events')).toBeVisible()
+  await expect(page.getByText('0 chronology')).toBeVisible()
+  await expect(
+    page.getByRole('button', {
+      name: 'Abrahamic covenant in effect',
+      exact: true
+    })
+  ).toHaveCount(1)
+})
+
+test('opens and duplicates a read-only chronology event', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Filters', exact: true }).click()
+  await page.getByLabel('Expanded chronology', { exact: true }).check()
+  await page.getByRole('button', { name: 'Filters', exact: true }).click()
+  await page.getByLabel('Search timeline').fill('Jared born')
+  await page
+    .getByRole('button', { name: 'Jared born', exact: true })
+    .click()
+
+  await expect(
+    page.getByRole('button', {
+      name: 'Duplicate as editable event',
+      exact: true
+    })
+  ).toBeVisible()
+  await page
+    .getByRole('button', {
+      name: 'Duplicate as editable event',
+      exact: true
+    })
+    .click()
+  await expect(page.getByText('New item')).toBeVisible()
+  await expect(page.getByLabel('Name')).toHaveValue('Jared born')
+  await expect(page.getByRole('button', { name: /Delete/ })).toHaveCount(0)
+})
+
+test('remembers the chronology layer and opens same-year event groups', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Filters', exact: true }).click()
+  await page.getByLabel('Expanded chronology', { exact: true }).check()
+  await page.reload()
+  await page.getByRole('button', { name: 'Filters', exact: true }).click()
+  await expect(
+    page.getByLabel('Expanded chronology', { exact: true })
+  ).toBeChecked()
+  await page.getByRole('button', { name: 'Filters', exact: true }).click()
+
+  await page.getByLabel('Search timeline').fill('1919 B.C.E.')
+  const group = page.getByRole('button', {
+    name: '6 chronology events',
+    exact: true
+  })
+  await expect(group).toBeVisible()
+  await group.click()
+  await expect(
+    page.getByRole('complementary', { name: '6 chronology events' })
+  ).toBeVisible()
+})

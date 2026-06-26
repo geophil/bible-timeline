@@ -32,6 +32,7 @@ type Props = {
   immersive: boolean
   onToggleImmersive: () => void
   onSelect: (item: TimelineItem) => void
+  onSelectGroup: (items: TimelineEvent[]) => void
 }
 
 const colors = {
@@ -41,6 +42,10 @@ const colors = {
 }
 
 const CONTEXT_HEIGHT = 154
+const CHRONOLOGY_LAYER_HEIGHT = 280
+const CHRONOLOGY_TOP = 48
+const CHRONOLOGY_LANE_HEIGHT = 24
+const CHRONOLOGY_LANES = 9
 const PEOPLE_TOP = 22
 const LANE_HEIGHT = 35
 const PERSON_NAME_OFFSET = -3
@@ -68,7 +73,8 @@ export function Timeline({
   selectedId,
   immersive,
   onToggleImmersive,
-  onSelect
+  onSelect,
+  onSelectGroup
 }: Props) {
   const cardRef = useRef<HTMLElement>(null)
   const contextRef = useRef<SVGSVGElement>(null)
@@ -82,10 +88,16 @@ export function Timeline({
   const periods = items.filter((item): item is Period => item.type === 'period')
   const powers = items.filter((item): item is WorldPower => item.type === 'power')
   const events = items.filter((item): item is TimelineEvent => item.type === 'event')
+  const majorEvents = events.filter((event) => event.importance !== 'secondary')
+  const secondaryEvents = events.filter(
+    (event) => event.importance === 'secondary'
+  )
   const people = items.filter((item): item is Person => item.type === 'person')
   const laidOutPeople = useMemo(() => assignLanes(people), [people])
   const laneCount = Math.max(1, ...laidOutPeople.map(({ lane }) => lane + 1))
-  const peopleHeight = Math.max(420, PEOPLE_TOP + laneCount * LANE_HEIGHT + 34)
+  const chronologyLayerHeight = secondaryEvents.length ? CHRONOLOGY_LAYER_HEIGHT : 0
+  const peopleStartY = PEOPLE_TOP + chronologyLayerHeight
+  const peopleHeight = Math.max(420, peopleStartY + laneCount * LANE_HEIGHT + 34)
   const baseScale = useMemo(
     () => scaleLinear().domain([MIN_YEAR, MAX_YEAR]).range([52, width - 40]),
     [width]
@@ -224,7 +236,24 @@ export function Timeline({
   }, [baseScale, focusedResultSet, items, width])
 
   const ticks = baseScale.ticks(zoomLevel < 2 ? 10 : zoomLevel < 6 ? 18 : 30)
-  const eventClusters = clusterEvents(events, x, zoomLevel < 1.5 ? 34 : 0)
+  const eventClusters = clusterEvents(
+    majorEvents,
+    x,
+    zoomLevel < 1.5 ? 34 : 0
+  )
+  const chronologyClusters = clusterChronologyEvents(
+    secondaryEvents,
+    x,
+    zoomLevel
+  )
+  const chronologyLayout = layoutChronologyLayer(
+    chronologyClusters,
+    x,
+    width,
+    zoomLevel,
+    focusedResultSet,
+    selectedId
+  )
   const eventLabels = layoutEventLabels(
     eventClusters
       .filter((cluster) => cluster.items.length === 1)
@@ -407,7 +436,6 @@ export function Timeline({
               )
             })}
           </g>
-
         </svg>
       </div>
 
@@ -445,12 +473,128 @@ export function Timeline({
             <line className="era-line" x1={x(0)} x2={x(0)} y1={0} y2={peopleHeight} />
           </g>
 
+          {secondaryEvents.length > 0 && (
+            <g
+              className="chronology-layer"
+              aria-label="Expanded chronology detail layer"
+            >
+              <rect
+                className="chronology-layer-bg"
+                x={0}
+                y={0}
+                width={width}
+                height={chronologyLayerHeight - 12}
+              />
+              <text className="chronology-layer-title" x={28} y={18}>
+                Expanded chronology
+              </text>
+              {chronologyLayout.map((entry) => {
+                const { cluster, lane, labelWidth, labelAnchor, showLabel } = entry
+                const item = cluster.items[0]
+                const eventX = x(cluster.axisYear)
+                const y = CHRONOLOGY_TOP + lane * CHRONOLOGY_LANE_HEIGHT
+                const isGroup = cluster.items.length > 1
+                const isSelected = item.id === selectedId
+                const [rangeStart, rangeEnd] = dateSpan(item)
+                const rangeWidth = Math.max(3, x(rangeEnd) - x(rangeStart))
+                const labelX = labelAnchor === 'end' ? eventX - 8 : eventX + 8
+                const chipX =
+                  labelAnchor === 'end' ? labelX - labelWidth - 7 : labelX - 7
+                const title =
+                  isGroup
+                    ? `${cluster.items.length} records`
+                    : fitSvgLabel(item.name, labelWidth - 48, 4.6)
+                const openCluster = () => {
+                  if (isGroup && zoomLevel >= 6) {
+                    onSelectGroup(cluster.items)
+                  } else if (isGroup) {
+                    centerOnAxisYear(
+                      cluster.axisYear,
+                      Math.min(80, Math.max(3, transform.k * 2.2))
+                    )
+                  } else {
+                    onSelect(item)
+                  }
+                }
+                return (
+                  <g
+                    key={cluster.items.map((entry) => entry.id).join('-')}
+                    className={`${isSelected ? 'selected' : ''} ${showLabel ? 'labelled' : ''}`}
+                    role="button"
+                    aria-label={
+                      isGroup
+                        ? `${cluster.items.length} chronology events`
+                        : item.name
+                    }
+                    tabIndex={0}
+                    onClick={openCluster}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') openCluster()
+                    }}
+                  >
+                    {!isGroup && item.endDate && zoomLevel >= 6 ? (
+                      <rect
+                        className="chronology-range"
+                        x={x(rangeStart)}
+                        y={y - 4}
+                        width={rangeWidth}
+                        height={8}
+                        rx={4}
+                      />
+                    ) : (
+                      <circle
+                        cx={eventX}
+                        cy={y}
+                        r={isGroup ? 7 : isSelected ? 5.5 : 3.4}
+                      />
+                    )}
+                    {isGroup && !showLabel && (
+                      <text
+                        className="cluster-label chronology-cluster-label"
+                        x={eventX}
+                        y={y + 3}
+                        textAnchor="middle"
+                      >
+                        {cluster.items.length}
+                      </text>
+                    )}
+                    {showLabel && (
+                      <>
+                        <rect
+                          className="chronology-label-chip"
+                          x={chipX}
+                          y={y - 10}
+                          width={labelWidth + 14}
+                          height={20}
+                          rx={10}
+                        />
+                        <text
+                          className="event-label chronology-event-label"
+                          x={labelX}
+                          y={y + 3}
+                          textAnchor={labelAnchor}
+                        >
+                          <tspan className="event-label-date">
+                            {isGroup ? formatAxisYear(cluster.axisYear) : formatDate(item.date)}
+                          </tspan>
+                          <tspan className="event-label-title">
+                            {' · '}{title}
+                          </tspan>
+                        </text>
+                      </>
+                    )}
+                  </g>
+                )
+              })}
+            </g>
+          )}
+
           <g className={`people ${zoomLevel < 1.35 ? 'people-overview' : ''}`}>
               {laidOutPeople.map(({ person, lane }) => {
                 const [start, end] = dateSpan(person)
                 const barX = x(start)
                 const barWidth = Math.max(5, x(end) - x(start))
-                const y = PEOPLE_TOP + lane * LANE_HEIGHT
+                const y = peopleStartY + lane * LANE_HEIGHT
                 const isSelected = person.id === selectedId
                 const overlaps =
                   selectedSpan && start <= selectedSpan[1] && end >= selectedSpan[0]
@@ -503,10 +647,10 @@ export function Timeline({
                     <path
                       key={`${selected.id}-${relationship.personId}`}
                       className="relationship-line"
-                      d={`M ${x((fromSpan[0] + fromSpan[1]) / 2)} ${PEOPLE_TOP + from.lane * LANE_HEIGHT}
-                          C ${x((fromSpan[0] + fromSpan[1]) / 2)} ${PEOPLE_TOP + from.lane * LANE_HEIGHT - 24},
-                            ${x((toSpan[0] + toSpan[1]) / 2)} ${PEOPLE_TOP + to.lane * LANE_HEIGHT - 24},
-                            ${x((toSpan[0] + toSpan[1]) / 2)} ${PEOPLE_TOP + to.lane * LANE_HEIGHT}`}
+                      d={`M ${x((fromSpan[0] + fromSpan[1]) / 2)} ${peopleStartY + from.lane * LANE_HEIGHT}
+                          C ${x((fromSpan[0] + fromSpan[1]) / 2)} ${peopleStartY + from.lane * LANE_HEIGHT - 24},
+                            ${x((toSpan[0] + toSpan[1]) / 2)} ${peopleStartY + to.lane * LANE_HEIGHT - 24},
+                            ${x((toSpan[0] + toSpan[1]) / 2)} ${peopleStartY + to.lane * LANE_HEIGHT}`}
                     />
                   )
                 })}
@@ -522,21 +666,99 @@ function clusterEvents(
   x: (value: number) => number,
   threshold: number
 ) {
-  const sorted = [...events].sort((a, b) => toAxisYear(a.date) - toAxisYear(b.date))
+  const sorted = [...events].sort((a, b) => eventAxisYear(a) - eventAxisYear(b))
   const clusters: { items: TimelineEvent[]; axisYear: number }[] = []
   sorted.forEach((event) => {
-    const axisYear = toAxisYear(event.date)
+    const axisYear = eventAxisYear(event)
     const last = clusters.at(-1)
     if (last && threshold && Math.abs(x(axisYear) - x(last.axisYear)) < threshold) {
       last.items.push(event)
       last.axisYear =
-        last.items.reduce((total, item) => total + toAxisYear(item.date), 0) /
+        last.items.reduce((total, item) => total + eventAxisYear(item), 0) /
         last.items.length
     } else {
       clusters.push({ items: [event], axisYear })
     }
   })
   return clusters
+}
+
+function clusterChronologyEvents(
+  events: TimelineEvent[],
+  x: (value: number) => number,
+  zoomLevel: number
+) {
+  if (zoomLevel >= 8) {
+    const byYear = new Map<number, TimelineEvent[]>()
+    events.forEach((event) => {
+      const year = toAxisYear(event.date)
+      const group = byYear.get(year) ?? []
+      group.push(event)
+      byYear.set(year, group)
+    })
+    return [...byYear.entries()]
+      .sort(([a], [b]) => a - b)
+      .map(([axisYear, items]) => ({ axisYear, items }))
+  }
+  return clusterEvents(events, x, zoomLevel < 2 ? 26 : 16)
+}
+
+function layoutChronologyLayer(
+  clusters: { items: TimelineEvent[]; axisYear: number }[],
+  x: (value: number) => number,
+  width: number,
+  zoomLevel: number,
+  focusedResultSet: boolean,
+  selectedId?: string
+) {
+  const showAllLabels = focusedResultSet || zoomLevel >= 12
+  const laneEnds = Array.from({ length: CHRONOLOGY_LANES }, () => -Infinity)
+  return [...clusters]
+    .sort((a, b) => x(a.axisYear) - x(b.axisYear))
+    .map((cluster) => {
+      const eventX = x(cluster.axisYear)
+      const item = cluster.items[0]
+      const isGroup = cluster.items.length > 1
+      const mustShowLabel = cluster.items.some((entry) => entry.id === selectedId)
+      let showLabel = showAllLabels || mustShowLabel
+      const rawLabelWidth = isGroup
+        ? 74
+        : Math.min(
+            138,
+            Math.max(86, formatDate(item.date).length * 4.6 + item.name.length * 4.2)
+          )
+      const labelWidth = showLabel ? rawLabelWidth : 0
+      const rightSpace = width - eventX - 18
+      const leftSpace = eventX - 18
+      const labelAnchor =
+        rightSpace >= labelWidth || rightSpace >= leftSpace ? 'start' : 'end'
+      const labelStart = labelAnchor === 'end' ? eventX - labelWidth - 24 : eventX - 10
+      const labelEnd = labelAnchor === 'end' ? eventX + 10 : eventX + labelWidth + 24
+      const fitsViewport = labelStart >= 8 && labelEnd <= width - 8
+      if (showLabel && !fitsViewport) {
+        showLabel = false
+      }
+      let lane = showLabel
+        ? laneEnds.findIndex((laneEnd) => labelStart > laneEnd)
+        : -1
+      if (showLabel && lane === -1 && !mustShowLabel) {
+        showLabel = false
+      }
+      const footprint = showLabel ? 22 : isGroup ? 26 : 18
+      if (lane === -1) {
+        lane = laneEnds.findIndex((laneEnd) => eventX - footprint / 2 > laneEnd)
+      }
+      if (lane === -1) {
+        lane = laneEnds.indexOf(Math.min(...laneEnds))
+      }
+      laneEnds[lane] = showLabel ? labelEnd + 8 : eventX + footprint / 2 + 6
+      return { cluster, lane, labelWidth, labelAnchor: labelAnchor as 'start' | 'end', showLabel }
+    })
+}
+
+function eventAxisYear(event: TimelineEvent) {
+  const [start, end] = dateSpan(event)
+  return (start + end) / 2
 }
 
 export function fitSvgLabel(

@@ -16,6 +16,8 @@ const urls = {
 } as const
 
 const source = (section: 1 | 2 | 3): SourceRef => ({
+  id: `timeline-section-${section}`,
+  label: `Source section ${section}`,
   section,
   url: urls[section]
 })
@@ -528,7 +530,7 @@ const powers: WorldPower[] = [
 ]
 
 export const starterDataset: TimelineDataset = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   items: [...periods, ...powers, ...people, ...events]
 }
 

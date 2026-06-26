@@ -7,11 +7,13 @@ import type {
   HistoricalDate,
   ItemType,
   Person,
+  SourceRef,
   TimelineItem
 } from '../types'
 
 type Props = {
   item?: TimelineItem
+  isNew?: boolean
   people: Person[]
   onSave: (item: TimelineItem) => Promise<void>
   onDelete: (id: string) => Promise<void>
@@ -42,6 +44,10 @@ type Draft = {
   scriptures: string
   relationships: string
   sections: number[]
+  otherSources: SourceRef[]
+  aliases: string[]
+  relatedPersonIds: string[]
+  publicationReferences: string[]
 }
 
 const emptyDate = (): DraftDate => ({
@@ -79,7 +85,13 @@ function initialDraft(item?: TimelineItem): Draft {
     image: item?.image,
     periodId: 'periodId' in (item ?? {}) ? (item as Person).periodId ?? '' : '',
     start: toDraftDate(item && 'start' in item ? item.start : undefined),
-    end: toDraftDate(item && 'end' in item ? item.end : undefined),
+    end: toDraftDate(
+      item?.type === 'event'
+        ? item.endDate
+        : item && 'end' in item
+          ? item.end
+          : undefined
+    ),
     date: toDraftDate(item?.type === 'event' ? item.date : undefined),
     scriptures:
       item && 'scriptureReferences' in item
@@ -89,11 +101,27 @@ function initialDraft(item?: TimelineItem): Draft {
       item?.type === 'person'
         ? item.relationships.map((relation) => `${relation.personId}:${relation.type}`).join('\n')
         : '',
-    sections: item?.sources.map((source) => source.section) ?? []
+    sections:
+      item?.sources
+        .map((source) => source.section)
+        .filter((section): section is 1 | 2 | 3 => section !== undefined) ?? [],
+    otherSources:
+      item?.sources.filter((source) => source.section === undefined) ?? [],
+    aliases: item?.aliases ?? [],
+    relatedPersonIds: item?.type === 'event' ? item.relatedPersonIds ?? [] : [],
+    publicationReferences:
+      item?.type === 'event' ? item.publicationReferences ?? [] : []
   }
 }
 
-export function ItemEditor({ item, people, onSave, onDelete, onClose }: Props) {
+export function ItemEditor({
+  item,
+  isNew = false,
+  people,
+  onSave,
+  onDelete,
+  onClose
+}: Props) {
   const [draft, setDraft] = useState(() => initialDraft(item))
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
@@ -118,7 +146,7 @@ export function ItemEditor({ item, people, onSave, onDelete, onClose }: Props) {
     <div className="modal-backdrop">
       <form className="editor" onSubmit={submit}>
         <div className="editor-header">
-          <div><p className="eyebrow">{item ? 'Edit item' : 'New item'}</p><h2>{draft.name || 'Timeline item'}</h2></div>
+          <div><p className="eyebrow">{item && !isNew ? 'Edit item' : 'New item'}</p><h2>{draft.name || 'Timeline item'}</h2></div>
           <button type="button" className="icon-button" onClick={onClose} aria-label="Close editor"><X /></button>
         </div>
 
@@ -127,7 +155,7 @@ export function ItemEditor({ item, people, onSave, onDelete, onClose }: Props) {
             <select
               value={draft.type}
               onChange={(event) => setDraft({ ...draft, type: event.target.value as ItemType })}
-              disabled={Boolean(item)}
+              disabled={Boolean(item && !isNew)}
             >
               <option value="person">Person</option>
               <option value="event">Event</option>
@@ -141,7 +169,10 @@ export function ItemEditor({ item, people, onSave, onDelete, onClose }: Props) {
         </div>
 
         {draft.type === 'event' ? (
-          <DateInput title="Date" value={draft.date} onChange={(date) => setDraft({ ...draft, date })} />
+          <div className="form-grid">
+            <DateInput title="Date" value={draft.date} onChange={(date) => setDraft({ ...draft, date })} />
+            <DateInput title="End" value={draft.end} onChange={(end) => setDraft({ ...draft, end })} optional />
+          </div>
         ) : (
           <div className="form-grid">
             <DateInput title="Start" value={draft.start} onChange={(start) => setDraft({ ...draft, start })} />
@@ -217,7 +248,7 @@ export function ItemEditor({ item, people, onSave, onDelete, onClose }: Props) {
         )}
         {error && <p className="form-error">{error}</p>}
         <div className="editor-footer">
-          {item && (
+          {item && !isNew && (
             <button
               type="button"
               className="danger"
@@ -312,22 +343,32 @@ function buildItem(draft: Draft): TimelineItem {
     tags: draft.tags.split(',').map((value) => value.trim()).filter(Boolean),
     color: draft.color || undefined,
     image: draft.image,
-    sources: draft.sections.map((section) => ({
-      section: section as 1 | 2 | 3,
-      url: section === 1
-        ? 'https://wol.jw.org/en/wol/d/r1/lp-e/1102025962'
-        : section === 2
-          ? 'https://wol.jw.org/en/wol/d/r1/lp-e/1102025964'
-          : 'https://wol.jw.org/en/wol/d/r1/lp-e/1102025966'
-    }))
+    aliases: draft.aliases,
+    sources: [
+      ...draft.otherSources,
+      ...draft.sections.map((section) => ({
+        id: `timeline-section-${section}`,
+        label: `Source section ${section}`,
+        section: section as 1 | 2 | 3,
+        url: section === 1
+          ? 'https://wol.jw.org/en/wol/d/r1/lp-e/1102025962'
+          : section === 2
+            ? 'https://wol.jw.org/en/wol/d/r1/lp-e/1102025964'
+            : 'https://wol.jw.org/en/wol/d/r1/lp-e/1102025966'
+      }))
+    ]
   }
   if (draft.type === 'event') {
     return {
       ...base,
       type: 'event',
       date: buildDate(draft.date)!,
+      endDate: buildDate(draft.end, true),
       periodId: draft.periodId || undefined,
-      scriptureReferences: splitList(draft.scriptures)
+      scriptureReferences: splitList(draft.scriptures),
+      publicationReferences: draft.publicationReferences,
+      relatedPersonIds: draft.relatedPersonIds,
+      importance: 'major'
     }
   }
   const start = buildDate(draft.start)!

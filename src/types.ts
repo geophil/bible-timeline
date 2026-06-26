@@ -18,13 +18,36 @@ export interface HistoricalDate {
 export type ItemType = 'person' | 'event' | 'period' | 'power'
 
 export interface SourceRef {
-  section: 1 | 2 | 3
+  id?: string
+  label?: string
   url: string
+  section?: 1 | 2 | 3
+  locator?: string
 }
 
 export interface Relationship {
   personId: string
   type: string
+}
+
+export interface ChronologyProvenance {
+  datasetId: 'jw-dates-calendar-bce'
+  sourceRecordId: string
+  sourceParagraph: string
+  dateSourceParagraph: string
+  rowType: 'dated' | 'continuation'
+  immutable: true
+}
+
+export interface ChronologyDetail {
+  id: string
+  title: string
+  date: HistoricalDate
+  endDate?: HistoricalDate
+  source: SourceRef
+  scriptureReferences: string[]
+  publicationReferences: string[]
+  tags: string[]
 }
 
 export interface BaseItem {
@@ -37,6 +60,8 @@ export interface BaseItem {
   color?: string
   image?: string
   sources: SourceRef[]
+  aliases?: string[]
+  expandedChronology?: ChronologyDetail[]
 }
 
 export interface Person extends BaseItem {
@@ -52,8 +77,13 @@ export interface Person extends BaseItem {
 export interface TimelineEvent extends BaseItem {
   type: 'event'
   date: HistoricalDate
+  endDate?: HistoricalDate
   periodId?: string
   scriptureReferences: string[]
+  publicationReferences?: string[]
+  relatedPersonIds?: string[]
+  importance?: 'major' | 'secondary'
+  provenance?: ChronologyProvenance
 }
 
 export interface Period extends BaseItem {
@@ -71,9 +101,23 @@ export interface WorldPower extends BaseItem {
 export type TimelineItem = Person | TimelineEvent | Period | WorldPower
 
 export interface TimelineDataset {
-  schemaVersion: 1
+  schemaVersion: 2
   exportedAt?: string
   items: TimelineItem[]
+}
+
+export interface ChronologyEnrichment extends ChronologyDetail {
+  targetItemIds: string[]
+}
+
+export interface ExpandedChronologyBundle {
+  schemaVersion: 1
+  datasetId: 'jw-dates-calendar-bce'
+  generatedAt: string
+  source: SourceRef
+  sourceRecordCount: number
+  events: TimelineEvent[]
+  enrichments: ChronologyEnrichment[]
 }
 
 export interface TimelineFilters {

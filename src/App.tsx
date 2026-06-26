@@ -1,13 +1,26 @@
 import { BookOpen, DatabaseBackup, Filter, Menu, Plus, RotateCcw, Search, Upload, X } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { downloadBackup, readBackupFile } from './backup'
-import { DetailDrawer } from './components/DetailDrawer'
+import {
+  applyChronologyEnrichments,
+  duplicateChronologyEvent,
+  EXPANDED_CHRONOLOGY_STORAGE_KEY,
+  loadExpandedChronology
+} from './chronology'
+import { DetailDrawer, EventGroupDrawer } from './components/DetailDrawer'
 import { ItemEditor } from './components/ItemEditor'
 import { Timeline } from './components/Timeline'
 import { deleteItem, factoryReset, initializeDatabase, mergeAll, replaceAll, saveItem } from './db'
 import { filterItems } from './filter'
 import { sourceUrls } from './seed'
-import type { ItemType, Person, TimelineFilters, TimelineItem } from './types'
+import type {
+  ExpandedChronologyBundle,
+  ItemType,
+  Person,
+  TimelineEvent,
+  TimelineFilters,
+  TimelineItem
+} from './types'
 import './styles.css'
 
 const defaultFilters: TimelineFilters = {
@@ -24,14 +37,26 @@ function immersiveFromUrl() {
   return value === '1' || value === 'true'
 }
 
+function expandedChronologyFromStorage() {
+  return localStorage.getItem(EXPANDED_CHRONOLOGY_STORAGE_KEY) === '1'
+}
+
 export default function App() {
   const [items, setItems] = useState<TimelineItem[]>([])
   const [selectedId, setSelectedId] = useState<string>()
   const [editing, setEditing] = useState<TimelineItem | 'new'>()
+  const [editingAsNew, setEditingAsNew] = useState(false)
   const [filters, setFilters] = useState(defaultFilters)
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [dataOpen, setDataOpen] = useState(false)
   const [immersive, setImmersive] = useState(immersiveFromUrl)
+  const [expandedChronology, setExpandedChronology] = useState(
+    expandedChronologyFromStorage
+  )
+  const [chronologyBundle, setChronologyBundle] =
+    useState<ExpandedChronologyBundle>()
+  const [chronologyLoading, setChronologyLoading] = useState(false)
+  const [eventGroup, setEventGroup] = useState<TimelineEvent[]>([])
   const [loading, setLoading] = useState(true)
   const [notice, setNotice] = useState('')
   const importRef = useRef<HTMLInputElement>(null)
@@ -61,11 +86,43 @@ export default function App() {
     }
   }, [immersive])
 
-  const selected = items.find((item) => item.id === selectedId)
-  const visibleItems = useMemo(() => filterItems(items, filters), [items, filters])
+  useEffect(() => {
+    localStorage.setItem(
+      EXPANDED_CHRONOLOGY_STORAGE_KEY,
+      expandedChronology ? '1' : '0'
+    )
+    if (!expandedChronology || chronologyBundle || chronologyLoading) return
+    setChronologyLoading(true)
+    loadExpandedChronology()
+      .then(setChronologyBundle)
+      .catch(() => {
+        setExpandedChronology(false)
+        flash('Unable to load expanded chronology.')
+      })
+      .finally(() => setChronologyLoading(false))
+  }, [chronologyBundle, chronologyLoading, expandedChronology])
+
+  useEffect(() => {
+    if (expandedChronology) return
+    if (selectedId?.startsWith('chronology-')) setSelectedId(undefined)
+    setEventGroup([])
+  }, [expandedChronology, selectedId])
+
+  const combinedItems = useMemo(() => {
+    if (!expandedChronology || !chronologyBundle) return items
+    return [
+      ...applyChronologyEnrichments(items, chronologyBundle),
+      ...chronologyBundle.events
+    ]
+  }, [chronologyBundle, expandedChronology, items])
+  const selected = combinedItems.find((item) => item.id === selectedId)
+  const visibleItems = useMemo(
+    () => filterItems(combinedItems, filters),
+    [combinedItems, filters]
+  )
   const people = items.filter((item): item is Person => item.type === 'person')
-  const periods = items.filter((item) => item.type === 'period')
-  const tags = [...new Set(items.flatMap((item) => item.tags))].sort()
+  const periods = combinedItems.filter((item) => item.type === 'period')
+  const tags = [...new Set(combinedItems.flatMap((item) => item.tags))].sort()
 
   const persist = async (item: TimelineItem) => {
     await saveItem(item)
@@ -125,7 +182,10 @@ export default function App() {
       <header className="app-header">
         <div className="brand"><BookOpen /><div><p>Explore the chronology</p><h1>Bible Timeline</h1></div></div>
         <div className="header-actions">
-          <button className="primary" onClick={() => setEditing('new')}><Plus /> Add point</button>
+          <button className="primary" onClick={() => {
+            setEditingAsNew(true)
+            setEditing('new')
+          }}><Plus /> Add point</button>
           <button onClick={() => setDataOpen(!dataOpen)}><Menu /> Data</button>
         </div>
       </header>
@@ -141,17 +201,31 @@ export default function App() {
           />
           {filters.query && <button onClick={() => setFilters({ ...filters, query: '' })} aria-label="Clear search"><X /></button>}
         </label>
-        <button className={hasFilters(filters) ? 'active' : ''} onClick={() => setFiltersOpen(!filtersOpen)}>
-          <Filter /> Filters {hasFilters(filters) && <span className="filter-dot" />}
+        <button className={hasFilters(filters) || expandedChronology ? 'active' : ''} onClick={() => setFiltersOpen(!filtersOpen)}>
+          <Filter /> Filters {(hasFilters(filters) || expandedChronology) && <span className="filter-dot" />}
         </button>
         <div className="stats">
           <strong>{visibleItems.filter((item) => item.type === 'person').length}</strong> people
-          <strong>{visibleItems.filter((item) => item.type === 'event').length}</strong> events
+          <strong>{visibleItems.filter((item) => item.type === 'event' && item.importance !== 'secondary').length}</strong> events
+          {expandedChronology && (
+            <>
+              <strong>{visibleItems.filter((item) => item.type === 'event' && item.importance === 'secondary').length}</strong> chronology
+            </>
+          )}
         </div>
       </section>
 
       {filtersOpen && (
         <section className="filter-panel">
+          <label className="layer-toggle">
+            <input
+              type="checkbox"
+              checked={expandedChronology}
+              onChange={(event) => setExpandedChronology(event.target.checked)}
+            />
+            Expanded chronology
+            {chronologyLoading && <small>Loading…</small>}
+          </label>
           <div>
             <span>Types</span>
             {(['person', 'event', 'period', 'power'] as ItemType[]).map((type) => (
@@ -213,21 +287,60 @@ export default function App() {
             setImmersive((current) => !current)
           }}
           onSelect={(item) => setSelectedId(item.id)}
+          onSelectGroup={(events) => {
+            setSelectedId(undefined)
+            setEventGroup(events)
+          }}
         />
         <footer className="source-footer">
-          <p>Chronology derived from the factual date tables in the three source timelines. Artwork is not redistributed.</p>
-          <div>{([1, 2, 3] as const).map((section) => <a key={section} href={sourceUrls[section]} target="_blank" rel="noreferrer">Section {section}</a>)}</div>
+          <p>Chronology derived from the cited factual date tables. Artwork is not redistributed.</p>
+          <div>
+            {([1, 2, 3] as const).map((section) => <a key={section} href={sourceUrls[section]} target="_blank" rel="noreferrer">Section {section}</a>)}
+            {expandedChronology && chronologyBundle && (
+              <a href={chronologyBundle.source.url} target="_blank" rel="noreferrer">
+                Expanded chronology
+              </a>
+            )}
+          </div>
         </footer>
       </main>
 
-      <DetailDrawer item={selected} allItems={items} onClose={() => setSelectedId(undefined)} onEdit={setEditing} onSelect={(item) => setSelectedId(item.id)} />
+      <DetailDrawer
+        item={selected}
+        allItems={combinedItems}
+        onClose={() => setSelectedId(undefined)}
+        onEdit={(item) => {
+          const editable = items.find((entry) => entry.id === item.id)
+          if (editable) setEditing(editable)
+        }}
+        onDuplicate={(event) => {
+          setEditing(duplicateChronologyEvent(event))
+          setEditingAsNew(true)
+          setSelectedId(undefined)
+        }}
+        onSelect={(item) => setSelectedId(item.id)}
+      />
+      {eventGroup.length > 0 && (
+        <EventGroupDrawer
+          events={eventGroup}
+          onClose={() => setEventGroup([])}
+          onSelect={(event) => {
+            setEventGroup([])
+            setSelectedId(event.id)
+          }}
+        />
+      )}
       {editing && (
         <ItemEditor
           item={editing === 'new' ? undefined : editing}
+          isNew={editing === 'new' || editingAsNew}
           people={people}
           onSave={persist}
           onDelete={remove}
-          onClose={() => setEditing(undefined)}
+          onClose={() => {
+            setEditing(undefined)
+            setEditingAsNew(false)
+          }}
         />
       )}
       {notice && <div className="toast" role="status">{notice}</div>}

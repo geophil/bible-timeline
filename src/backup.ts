@@ -1,16 +1,23 @@
-import { datasetSchema } from './schema'
+import { datasetSchema, legacyDatasetSchema } from './schema'
 import type { TimelineDataset, TimelineItem } from './types'
 
 export function createBackup(items: TimelineItem[]): TimelineDataset {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     exportedAt: new Date().toISOString(),
     items
   }
 }
 
 export function parseBackup(value: unknown): TimelineDataset {
-  return datasetSchema.parse(value)
+  const current = datasetSchema.safeParse(value)
+  if (current.success) return current.data
+  const legacy = legacyDatasetSchema.parse(value)
+  return {
+    schemaVersion: 2,
+    exportedAt: legacy.exportedAt,
+    items: legacy.items
+  }
 }
 
 export function downloadBackup(items: TimelineItem[]) {

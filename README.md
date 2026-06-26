@@ -29,15 +29,19 @@ not included or hotlinked.
 
 ## Standalone research data
 
-The parsed BCE chronology from the public **Dates (Calendar)** source is kept
-separate from the application's starter data:
+The parsed BCE chronology from the public **Dates (Calendar)** source remains
+separate from the editable starter data:
 
 - `data/jw-dates-calendar-bce.json`
 - `data/jw-dates-calendar-bce.csv`
 
-See [`data/README.md`](data/README.md) for its schema, source boundaries, and
-regeneration command. This dataset is review material and is not loaded into
-the timeline.
+It is compiled into an immutable, optional application layer. Enable
+**Expanded chronology** from Filters to explore it. Repeated source records
+enrich existing people, events, periods, and powers instead of adding duplicate
+markers.
+
+See [`data/README.md`](data/README.md) for its schema, source boundaries,
+deduplication manifest, and regeneration commands.
 
 ## Verification
 

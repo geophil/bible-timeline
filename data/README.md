@@ -8,7 +8,7 @@ the application's bundled starter timeline.
 - `jw-dates-calendar-bce.json` is the lossless normalized review dataset.
 - `jw-dates-calendar-bce.csv` is the same data flattened for spreadsheet
   review and editing.
-- Neither file is loaded by the application.
+- These files remain the review source rather than editable application data.
 
 The extractor reads paragraphs 69–498 of the BCE section of
 [Dates (Calendar)](https://wol.jw.org/en/wol/d/r1/lp-e/1200271562#h=68).
@@ -41,4 +41,21 @@ npm run data:extract:jw-dates -- --html data/source-cache/dates-calendar.html
 `data/source-cache` is ignored by Git. The generated files retain source
 paragraph links, Scripture references, publication-reference labels, category
 suggestions, and the original date notation. Their descriptions remain review
-material and have not yet been selected or adapted for the timeline.
+material.
+
+## Application compilation
+
+`expanded-chronology-manifest.json` contains reviewed semantic deduplication
+mappings and short-title overrides. Compile the immutable application bundle:
+
+```bash
+npm run data:compile:chronology
+```
+
+The compiler:
+
+- resolves every source paragraph to one new event or one enrichment;
+- rejects unresolved duplicate candidates;
+- enforces unique titles of no more than 48 characters at each date;
+- writes `src/data/expanded-chronology.json`; and
+- writes `expanded-chronology-report.json` for auditing.

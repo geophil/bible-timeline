@@ -46,10 +46,12 @@ export function dateSpan(item: {
   start?: HistoricalDate
   end?: HistoricalDate
   date?: HistoricalDate
+  endDate?: HistoricalDate
 }): [number, number] {
   if (item.date) {
-    const point = toAxisYear(item.date)
-    return [point, point]
+    const start = toAxisYear(item.date)
+    const end = item.endDate ? toAxisYear(item.endDate) : start
+    return [Math.min(start, end), Math.max(start, end)]
   }
   const start = item.start ? toAxisYear(item.start) : MIN_YEAR
   const end = item.end ? toAxisYear(item.end) : MAX_YEAR
