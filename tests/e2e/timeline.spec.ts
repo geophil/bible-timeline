@@ -85,6 +85,32 @@ test('pans the shared timeline by dragging the character canvas', async ({ page 
   await expect.poll(async () => Number(await firstBar.getAttribute('x'))).not.toBe(before)
 })
 
+test('scrolls vertically by dragging the timeline canvas when expanded chronology is tall', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Filters', exact: true }).click()
+  await page.getByLabel('Expanded chronology', { exact: true }).check()
+  await page.getByRole('button', { name: 'Filters', exact: true }).click()
+  await page.getByRole('button', { name: 'Zoom in' }).click()
+  await page.waitForTimeout(300)
+  await page.getByRole('button', { name: 'Zoom in' }).click()
+  await page.waitForTimeout(300)
+
+  const people = page.getByTestId('people-scroll')
+  const canvas = page.getByTestId('people-canvas')
+  const bounds = await canvas.boundingBox()
+  expect(bounds).not.toBeNull()
+
+  await people.evaluate((element) => {
+    element.scrollTop = 0
+  })
+  await page.mouse.move(bounds!.x + 420, bounds!.y + 330)
+  await page.mouse.down()
+  await page.mouse.move(bounds!.x + 425, bounds!.y + 120, { steps: 8 })
+  await page.mouse.up()
+
+  await expect.poll(() => people.evaluate((element) => element.scrollTop)).toBeGreaterThan(80)
+})
+
 test('enters an immersive full-viewport timeline and exits with Escape', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: 'Enter immersive mode' }).click()

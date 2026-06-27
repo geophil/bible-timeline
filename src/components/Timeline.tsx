@@ -183,6 +183,62 @@ export function Timeline({
     return () => scroller.removeEventListener('wheel', handleWheel)
   }, [transform.k])
 
+  useEffect(() => {
+    const scroller = peopleScrollRef.current
+    const canvas = peopleRef.current
+    if (!scroller || !canvas) return
+
+    let activePointerId: number | undefined
+    let startX = 0
+    let startY = 0
+    let startScrollTop = 0
+    let intent: 'pending' | 'horizontal' | 'vertical' = 'pending'
+
+    const reset = () => {
+      activePointerId = undefined
+      intent = 'pending'
+    }
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (event.target instanceof Element && event.target.closest('[data-no-zoom]')) return
+      activePointerId = event.pointerId
+      startX = event.clientX
+      startY = event.clientY
+      startScrollTop = scroller.scrollTop
+      intent = 'pending'
+    }
+
+    const handlePointerMove = (event: PointerEvent) => {
+      if (activePointerId !== event.pointerId) return
+      const deltaX = event.clientX - startX
+      const deltaY = event.clientY - startY
+      if (intent === 'pending') {
+        if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < 7) return
+        intent = Math.abs(deltaY) > Math.abs(deltaX) * 1.15 ? 'vertical' : 'horizontal'
+      }
+      if (intent !== 'vertical') return
+      event.preventDefault()
+      event.stopImmediatePropagation()
+      scroller.scrollTop = startScrollTop - deltaY
+    }
+
+    canvas.addEventListener('pointerdown', handlePointerDown, { capture: true })
+    canvas.addEventListener('pointermove', handlePointerMove, {
+      capture: true,
+      passive: false
+    })
+    canvas.addEventListener('pointerup', reset, { capture: true })
+    canvas.addEventListener('pointercancel', reset, { capture: true })
+    canvas.addEventListener('lostpointercapture', reset, { capture: true })
+    return () => {
+      canvas.removeEventListener('pointerdown', handlePointerDown, { capture: true })
+      canvas.removeEventListener('pointermove', handlePointerMove, { capture: true })
+      canvas.removeEventListener('pointerup', reset, { capture: true })
+      canvas.removeEventListener('pointercancel', reset, { capture: true })
+      canvas.removeEventListener('lostpointercapture', reset, { capture: true })
+    }
+  }, [])
+
   const zoomBy = (factor: number) => {
     if (!contextRef.current || !behaviorRef.current) return
     select(contextRef.current)
